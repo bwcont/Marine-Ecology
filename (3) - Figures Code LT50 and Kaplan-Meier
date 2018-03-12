@@ -9,11 +9,22 @@ R Code
 
 # clear list
 rm(list=ls())
+
+#load all packages
+library(plyr)
+library(MASS)
+library(dplyr)
+library(KMsurv)
+library(OIsurv)
+library(survival)
+
 #Pull in data
 setwd("C:/SaveHere")
 LT50Data <- read.csv("data.csv")
 
-
+#Check the data looks ok
+head(LT50Data)
+tail(LT50Data)
 
 
 
