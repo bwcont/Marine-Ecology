@@ -1,7 +1,7 @@
 # Marine-Ecology
 Sorte Lab - 199
 
-Folder: General Code <br/>
+Folder: <b>General Code<b/> <br/>
 1 - Figures Code Empty
 <br/>
 
