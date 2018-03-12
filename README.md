@@ -1,7 +1,11 @@
 # Marine-Ecology
 Sorte Lab - 199
 
-1 - LT50 Mussels Water V. Air
-2 - Figures Code Empty
-3 - Figures Code LT50 and Kaplna-Meier
+Folder: **General Code** <br/>
+(1) - Figures Code Empty
+<br/>
+
+Folder: **AirVWater** <br/>
+(1) - LT50 Mussels Water V. Air <br/>
+(2) - Figures Code LT50 and Kaplna-Meier
 
