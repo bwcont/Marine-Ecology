@@ -17,26 +17,81 @@ library(dplyr)
 library(KMsurv)
 library(OIsurv)
 library(survival)
+library(wesanderson)
 
 #Pull in data
 setwd("C:/SaveHere")
-LT50Data <- read.csv("data.csv")
+LT50Data <- read.csv("EC/DataExtrapolate.csv")
 
 #Check the data looks ok
 head(LT50Data)
 tail(LT50Data)
+View(LT50Data)
+
+###Subsets####
+#Air
+#Sol
+ASBA <- subset(LT50Data, LT50Data$ID == 'Air.Solitary.Biweek.A')
+ASBB<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Biweek.B')
+ASBC<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Biweek.C')
+ASDA<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Day.A')
+ASDB<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Day.B')
+ASDC<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Day.C')
+ASWA<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Week.A')
+ASWB<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Week.B')
+ASWC<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Week.C')
+ASTA<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Triweek.A')
+ASTB<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Triweek.B')
+ASTC<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Triweek.C')
+#TP
+ATBA<-subset(LT50Data, LT50Data$ID == 'Air.TP.Biweek.A')
+ATBB<-subset(LT50Data, LT50Data$ID == 'Air.TP.Biweek.B')
+ATBC<-subset(LT50Data, LT50Data$ID == 'Air.TP.Biweek.C')
+ATDA<-subset(LT50Data, LT50Data$ID == 'Air.TP.Day.A')
+ATDB<-subset(LT50Data, LT50Data$ID == 'Air.TP.Day.B')
+ATDC<-subset(LT50Data, LT50Data$ID == 'Air.TP.Day.C')
+ATWA<-subset(LT50Data, LT50Data$ID == 'Air.TP.Week.A')
+ATWB<-subset(LT50Data, LT50Data$ID == 'Air.TP.Week.B')
+ATWC<-subset(LT50Data, LT50Data$ID == 'Air.TP.Week.C')
+ATTA<-subset(LT50Data, LT50Data$ID == 'Air.TP.Triweek.A')
+ATTB<-subset(LT50Data, LT50Data$ID == 'Air.TP.Triweek.B')
+ATTC<-subset(LT50Data, LT50Data$ID == 'Air.TP.Triweek.C')
+
+#Water
+#Sol
+WSBA<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Biweek.A')
+WSBB<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Biweek.B')
+WSBC<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Biweek.C')
+WSDA<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Day.A')
+WSDB<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Day.B')
+WSDC<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Day.C')
+WSWA<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Week.A')
+WSWB<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Week.B')
+WSWC<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Week.C')
+WSTA<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Triweek.A')
+WSTB<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Triweek.B')
+WSTC<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Triweek.C')
+#TP
+WTBA<-subset(LT50Data, LT50Data$ID == 'Water.TP.Biweek.A')
+WTBB<-subset(LT50Data, LT50Data$ID == 'Water.TP.Biweek.B')
+WTBC<-subset(LT50Data, LT50Data$ID == 'Water.TP.Biweek.C')
+WTDA<-subset(LT50Data, LT50Data$ID == 'Water.TP.Day.A')
+WTDB<-subset(LT50Data, LT50Data$ID == 'Water.TP.Day.B')
+WTDC<-subset(LT50Data, LT50Data$ID == 'Water.TP.Day.C')
+WTWA<-subset(LT50Data, LT50Data$ID == 'Water.TP.Week.A')
+WTWB<-subset(LT50Data, LT50Data$ID == 'Water.TP.Week.B')
+WTWC<-subset(LT50Data, LT50Data$ID == 'Water.TP.Week.C')
+WTTA<-subset(LT50Data, LT50Data$ID == 'Water.TP.Triweek.A')
+WTTB<-subset(LT50Data, LT50Data$ID == 'Water.TP.Triweek.B')
+WTTC<-subset(LT50Data, LT50Data$ID == 'Water.TP.Triweek.C')
+#####
+
+
+
+
 
 
 ###Figure KM1.0######
 
 
 ###Figure KM2.0######
-
-
-
-
-
-
-
-
-
