@@ -1,0 +1,13 @@
+#Load up common used packages
+
+#Data Manipulation/Juggling
+install.packages("plyr")
+install.packages("dplyr")
+
+#KM Survivcal
+install.packages("MASS")
+install.packages("survival")
+install.packages("OIsurv")
+
+#Color
+install.packages("wesanderson")
