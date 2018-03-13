@@ -161,23 +161,17 @@ axis(2, cex.axis=1.2, tick = FALSE)
 box()
 
 ###JellyBean Time clumped...########
-
-
-
+#This one is clumped because of the 5th row in the "results"
 data.summary<-ddply(results, c('clump.name'), summarize,
                     mean.lt50 = mean(LT50, na.rm = TRUE), 
                     N = sum(!is.na(LT50)),
                     se.lt50 = sd(LT50, na.rm = TRUE)/sqrt(N))
-
 #Get the plus and minus of your points
 data.summary$se.plus<-(data.summary$mean.lt50 + data.summary$se.lt50)
 data.summary$se.minus<-(data.summary$mean.lt50 - data.summary$se.lt50)
-
-
 data.summary
 data.summary2<-data.summary[1:4,]
 data.summary2<-data.summary2[c(1,2,3,4),]
-
 #plot jellybean
 plot(0,type='n', #make empty plot 
      xlim=c(0.75,4.25) # x limits
@@ -187,25 +181,23 @@ plot(0,type='n', #make empty plot
      main = 'All LT50s', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.05) # make empty plot to fill in 
-FourColors <- c('#F2D1A8','#C6B99D','#669B7C','#557669')
+#Colors!
+FourColors <- c('#F2D1A8','#7E6752','#AED09E','#61B292')
 arrows(c(1,2,3,4), data.summary2$se.plus, # bottom of arrows
        c(1,2,3,4), data.summary2$se.minus, # top of arrows
        angle = 90, code = 3, length = 0, lty = 1, lwd = 30, # jelly bean width
        col = FourColors)
-
 # x-axis labels
 axis(1, at=c(1,2,3,4), labels= data.summary2$clump.name, cex.axis=1.2, # text size
      las = 1, tick = FALSE) 
-
 # add in points
 points(c(1,2,3,4), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
-
 # Get the outline of the box
 axis(2, cex.axis=1.2, tick = FALSE)
 box()
 
 
-
+###Kaplan Meier...#####
 
 
 
