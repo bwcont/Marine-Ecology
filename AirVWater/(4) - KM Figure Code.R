@@ -54,8 +54,7 @@ foosurv <- Surv(
 surv.fit.air.clump <- survfit(foosurv ~ 1)
 
 plot(surv.fit.water.clump, col='blue')
-###Make the KM Plot...####
-
+###Plot Color Set-Up...####
 #Get your color palettes
 ColorAirSol <- c('','','','')
 ColorAirSol <- c('','','','')
@@ -64,7 +63,7 @@ ColorAirSol <- c('','','','')
 #Alternative color:
 wes.colors<-wes_palette('Cavalcanti', 4)
 
-# Use NJS plot code and adapt 
+
 plot(0,type='n', #make empty plot 
      xlim=c(0,21) # x limits
      , ylim=c(0,1) # y limits 
@@ -76,7 +75,6 @@ plot(0,type='n', #make empty plot
 
 points(surv.fit.air.clump$time, surv.fit.air.clump$surv, type = 's', col = wes.colors[1], lwd = 2)
 points(surv.fit.water.clump$time,surv.fit.water.clump$surv, type = 's', col = wes.colors[2], lwd = 2)
-
 
 # x-axis labels
 axis(1, at=c(1,2,3,4), labels= data.summary2$gen.name, cex.axis=1.2, # text size
