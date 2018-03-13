@@ -117,7 +117,7 @@ results[,1]<-c('ASBA', 'ASBB', 'ASBC', "ASDA", 'ASDB', 'ASDC', 'ASWA', 'ASWB', '
 results[,5]<-c('ASB', 'ASB', 'ASB', "ASD", 'ASD', 'ASD', 'ASW', 'ASW', 'ASW', 'AST', 'AST', 'AST', 'ATB', 'ATB', 'ATB', 'ATD', 'ATD', 'ATD', 'ATW', 'ATW', 'ATW', 'ATT', 'ATT', 'ATT', 'WSB', 'WSB', 'WSB', 'WSD', 'WSD', 'WSD', 'WSW', 'WSW', 'WSW', 'WST', 'WST', 'WST', 'WTB', 'WTB', 'WTB', 'WTD', 'WTD', 'WTD', 'WTW', 'WTW', 'WTW', 'WTT', 'WTT', 'WTT')
 
 
-#JellyBean...####
+#JellyBean All (n=16)...####
 data.summary<-ddply(results, c('gen.name'), summarize,
                     mean.lt50 = mean(LT50, na.rm = TRUE), 
                     N = sum(!is.na(LT50)),
@@ -128,36 +128,33 @@ data.summary$se.plus<-(data.summary$mean.lt50 + data.summary$se.lt50)
 data.summary$se.minus<-(data.summary$mean.lt50 - data.summary$se.lt50)
 
 data.summary
-data.summary2<-data.summary[1:4,]
-data.summary2<-data.summary2[c(2,4,1,3),]
+data.summary2<-data.summary[1:16,]
+data.summary2<-data.summary2[c(2,4,1,3,6,8,5,7,10,12,9,11,14,16,13,15),]
 
 plot(0,type='n', #make empty plot 
-     xlim=c(0.75,4.25) # x limits
-     , ylim=c(24, 36) # y limits 
+     xlim=c(0.75,16.25) # x limits
+     , ylim=c(24, 40) # y limits 
      , xlab= '', # name x azis
      ylab = 'LT50', # name y axis
-     main = 'Air Solitary', # main title (on middle of plot)
+     main = 'All LT50s', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.05) # make empty plot to fill in 
 
-arrows(c(1,2,3,4), data.summary2$se.plus, # bottom of arrows
-       c(1,2,3,4), data.summary2$se.minus, # top of arrows
+arrows(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), data.summary2$se.plus, # bottom of arrows
+       c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), data.summary2$se.minus, # top of arrows
        angle = 90, code = 3, length = 0, lty = 1, lwd = 30, # jelly bean width
-       col = palette(rainbow(4, s = 0.9, v = 1)))
+       col = palette(rainbow(16, s = 0.9, v = 1)))
 
 # x-axis labels
-axis(1, at=c(1,2,3,4), labels= data.summary2$gen.name, cex.axis=1.2, # text size
+axis(1, at=c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), labels= data.summary2$gen.name, cex.axis=1.2, # text size
      las = 1, tick = FALSE) 
 
 # add in points
-points(c(1,2,3,4), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
+points(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
 
-# 
+# Get the outline of the box
 axis(2, cex.axis=1.2, tick = FALSE)
 box()
-
-
-
 
 
 
