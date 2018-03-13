@@ -23,6 +23,7 @@ library(wesanderson)
 #Pull in data
 setwd("C:/SaveHere")
 LT50Data <- read.csv("EC/DataExtrapolate.csv")
+attach(LT50Data)
 
 #Check the data looks ok
 head(LT50Data)
@@ -96,12 +97,15 @@ colnames(results)<-c('name', 'LT50', 'se', 'n', 'gen.name' )
 rownames(results)<-c(1:48)
 results
 
+#MAke list of subsets
+small<-list(ASBA, ASBB, ASBC, ASDA, ASDB, ASDC, ASWA, ASWB, ASWC, ASTA, ASTB, ASTC, ATBA, ATBB, ATBC, ATDA, ATDB, ATDC, ATWA, ATWB, ATWC, ATTA, ATTB, ATTC, WSBA, WSBB, WSBC, WSDA, WSDB, WSDC, WSWA, WSWB, WSWC, WSTA, WSTB, WSTC, WTBA, WTBB, WTBC, WTDA, WTDB, WTDC, WTWA, WTWB, WTWC, WTTA, WTTB, WTTC)
+unique(small)
 #Loop for LT50
 for(i in 1:48) {
   temp <- small[i] 
   temp<-as.data.frame(temp, na.rm = TRUE)
-  temp.y <- cbind(temp$alive, temp$dead)
-  temp.model <- glm(temp.y ~ temp$tmt_temp , binomial)
+  temp.y <- cbind(SURVIVAL, EVENT)
+  temp.model <- glm(temp.y ~  TempTreatment, binomial)
   results[i,2] <- dose.p(temp.model)
   se<-attr(dose.p(temp.model), 'SE')
   results[i,3]<-matrix(se)
@@ -120,6 +124,7 @@ results[,5]<-c('ASB', 'ASB', 'ASB', "ASD", 'ASD', 'ASD', 'ASW', 'ASW', 'ASW', 'A
 #Groups will be combined across time so we only have four groups:
 AirSol <- c()
 AirTP <- 
-WaterSol <- 
-WaterTP <- 
-
+  WaterSol <- 
+  WaterTP <- 
+  
+  
