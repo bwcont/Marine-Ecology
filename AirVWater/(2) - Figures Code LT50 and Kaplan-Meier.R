@@ -7,6 +7,7 @@
 ########### Edited: 3/12/18          
 ##############################################################
 
+###Setup..####
 # clear list
 rm(list=ls())
 
@@ -15,8 +16,8 @@ library(plyr)
 library(MASS)
 library(dplyr)
 library(KMsurv)
-library(OIsurv)
 library(survival)
+library(OIsurv)
 library(wesanderson)
 
 #Pull in data
@@ -28,7 +29,7 @@ head(LT50Data)
 tail(LT50Data)
 View(LT50Data)
 
-###Subsets####
+###Subsets..####
 #Air
 #Sol
 ASBA <- subset(LT50Data, LT50Data$ID == 'Air.Solitary.Biweek.A')
@@ -85,7 +86,8 @@ WTTA<-subset(LT50Data, LT50Data$ID == 'Water.TP.Triweek.A')
 WTTB<-subset(LT50Data, LT50Data$ID == 'Water.TP.Triweek.B')
 WTTC<-subset(LT50Data, LT50Data$ID == 'Water.TP.Triweek.C')
 
-#####
+#####MAke Reults Matrix...####
+
 
 # make results matrix
 results<-matrix(nrow = 48, ncol = 5)
@@ -112,12 +114,12 @@ results[,1]<-c('ASBA', 'ASBB', 'ASBC', "ASDA", 'ASDB', 'ASDC', 'ASWA', 'ASWB', '
 
 results[,5]<-c('ASB', 'ASB', 'ASB', "ASD", 'ASD', 'ASD', 'ASW', 'ASW', 'ASW', 'AST', 'AST', 'AST', 'ATB', 'ATB', 'ATB', 'ATD', 'ATD', 'ATD', 'ATW', 'ATW', 'ATW', 'ATT', 'ATT', 'ATT', 'WSB', 'WSB', 'WSB', 'WSD', 'WSD', 'WSD', 'WSW', 'WSW', 'WSW', 'WST', 'WST', 'WST', 'WTB', 'WTB', 'WTB', 'WTD', 'WTD', 'WTD', 'WTW', 'WTW', 'WTW', 'WTT', 'WTT', 'WTT')
 
+############################################################################################XXXXXXXXXXXXXXXXXXXXXX##############
+############################################################################################XXXXXXXXXXXXXXXXXXXXXX##############
+#####Make the Jelly Bean groups.....#####
+#Groups will be combined across time so we only have four groups:
+AirSol <- c()
+AirTP <- 
+WaterSol <- 
+WaterTP <- 
 
-
-
-
-
-###Figure KM1.0######
-
-
-###Figure KM2.0######
