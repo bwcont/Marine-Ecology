@@ -54,6 +54,118 @@ foosurv <- Surv(
 surv.fit.air.clump <- survfit(foosurv ~ 1)
 
 plot(surv.fit.water.clump, col='blue')
+####Air Solitary Survival Split by Temp...####
+#18C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "18"],  
+  time2 = TIMESURV[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "18"], 
+  event = dead[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "18"])
+surv.fit.air.sol.18 <- survfit(foosurv ~ 1)
+#32C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "32"],  
+  time2 = TIMESURV[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "32"], 
+  event = dead[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "32"])
+surv.fit.air.sol.32<- survfit(foosurv ~ 1)
+#36C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "36"],  
+  time2 = TIMESURV[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "36"], 
+  event = dead[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "36"])
+surv.fit.air.sol.36 <- survfit(foosurv ~ 1)
+#40C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "40"],  
+  time2 = TIMESURV[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "40"], 
+  event = dead[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "40"]
+  )
+surv.fit.air.sol.40 <- survfit(foosurv ~ 1)
+
+####Air TP Survival Split by Temp...####
+#18C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "18"],  
+  time2 = TIMESURV[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "18"], 
+  event = dead[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "18"])
+surv.fit.air.tp.18 <- survfit(foosurv ~ 1)
+#32C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "32"],  
+  time2 = TIMESURV[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "32"], 
+  event = dead[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "32"])
+surv.fit.air.tp.32<- survfit(foosurv ~ 1)
+#36C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "36"],  
+  time2 = TIMESURV[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "36"], 
+  event = dead[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "36"])
+surv.fit.air.tp.36 <- survfit(foosurv ~ 1)
+#40C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "40"],  
+  time2 = TIMESURV[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "40"], 
+  event = dead[LT50Data$air_water == "Air" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "40"]
+)
+surv.fit.air.tp.40 <- survfit(foosurv ~ 1)
+
+####Water Solitary Survival Split by Temp...####
+#18C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "18"],  
+  time2 = TIMESURV[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "18"], 
+  event = dead[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "18"])
+surv.fit.water.sol.18 <- survfit(foosurv ~ 1)
+#32C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "32"],  
+  time2 = TIMESURV[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "32"], 
+  event = dead[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "32"])
+surv.fit.water.sol.32<- survfit(foosurv ~ 1)
+#36C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "36"],  
+  time2 = TIMESURV[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "36"], 
+  event = dead[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "36"])
+surv.fit.water.sol.36 <- survfit(foosurv ~ 1)
+#40C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "40"],  
+  time2 = TIMESURV[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "40"], 
+  event = dead[LT50Data$air_water == "Water" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "40"]
+)
+surv.fit.water.sol.40 <- survfit(foosurv ~ 1)
+
+####WAter TP Survival Split by Temp...####
+#18C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "18"],  
+  time2 = TIMESURV[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "18"], 
+  event = dead[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "18"])
+surv.fit.water.tp.18 <- survfit(foosurv ~ 1)
+#32C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "32"],  
+  time2 = TIMESURV[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "32"], 
+  event = dead[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "32"])
+surv.fit.water.tp.32<- survfit(foosurv ~ 1)
+#36C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "36"],  
+  time2 = TIMESURV[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "36"], 
+  event = dead[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "36"])
+surv.fit.water.tp.36 <- survfit(foosurv ~ 1)
+#40C Line
+foosurv <- Surv(
+  time = TIMESTART[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "40"],  
+  time2 = TIMESURV[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "40"], 
+  event = dead[LT50Data$air_water == "Water" & LT50Data$uhab == "TP" & LT50Data$tmt_temp == "40"]
+)
+surv.fit.water.tp.40 <- survfit(foosurv ~ 1)
+
+
+
+
+
 ###Plot Color Set-Up...####
 #Get your color palettes
 ColorAirSol <- c('','','','')
@@ -63,7 +175,7 @@ ColorAirSol <- c('','','','')
 #Alternative color:
 wes.colors<-wes_palette('Cavalcanti', 4)
 
-
+###Make Plot General/Example...####
 plot(0,type='n', #make empty plot 
      xlim=c(0,21) # x limits
      , ylim=c(0,1) # y limits 
@@ -73,14 +185,58 @@ plot(0,type='n', #make empty plot
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.5) # make empty plot to fill in 
 
-points(surv.fit.air.clump$time, surv.fit.air.clump$surv, type = 's', col = wes.colors[1], lwd = 2)
-points(surv.fit.water.clump$time,surv.fit.water.clump$surv, type = 's', col = wes.colors[2], lwd = 2)
+points(surv.fit.air.sol.18$time, surv.fit.air.sol.18$surv, type = 's', col = wes.colors[1], lwd = 2)
+points(surv.fit.air.sol.32$time, surv.fit.air.sol.32$surv, type = 's', col = wes.colors[2], lwd = 2)
+points(surv.fit.air.sol.36$time, surv.fit.air.sol.36$surv, type = 's', col = wes.colors[3], lwd = 2)
+points(surv.fit.air.sol.40$time, surv.fit.air.sol.40$surv, type = 's', col = wes.colors[4], lwd = 2)
+
 
 # x-axis labels
-axis(1, at=c(1,2,3,4), labels= data.summary2$gen.name, cex.axis=1.2, # text size
-     las = 1, tick = FALSE) 
-# add in points
-points(c(1,2,3,4), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
-# 
 axis(2, cex.axis=1.2, tick = FALSE)
 box()
+
+###Specific Plot(empty at the moment)...#####
+
+
+
+######
+
+
+
+
+
+
+
+###############
+#######
+######
+#####
+####
+###
+##
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
