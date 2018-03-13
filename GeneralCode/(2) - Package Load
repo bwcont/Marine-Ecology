@@ -4,8 +4,10 @@
 install.packages("plyr")
 install.packages("dplyr")
 
-#KM Survivcal
+#LT50
 install.packages("MASS")
+
+#KM Survivcal
 install.packages("survival")
 install.packages("OIsurv")
 
