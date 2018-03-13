@@ -24,12 +24,6 @@ setwd("C:/SaveHere/EC")
 LT50Data <- read.csv("DataExtrapolate.csv")
 attach(LT50Data)
 
-#Check the data looks ok
-head(LT50Data)
-tail(LT50Data)
-View(LT50Data)
-
-###Kaplan Meier Functions...#####
 #Make a row for the start time. In this case I made the start time at 0 which is the start of the temp treatments
 LT50Data$TIMESTART <- 0.001
 #Check the data looks ok. 
@@ -37,7 +31,8 @@ LT50Data$TIMESTART <- 0.001
 head(LT50Data)
 tail(LT50Data)
 attach(LT50Data)
-###Make our survival for WATER#
+
+###Clumped Water Survival...####
 foosurv <- Surv(
   #time = Start of the time interval Note: our mussels could've started at different times. We controlled for this by measuring our mussels on Monday or Tuesday so we should be good on this
   time = TIMESTART[LT50Data$air_water == "Water"], 
@@ -47,24 +42,26 @@ foosurv <- Surv(
   event = dead[LT50Data$air_water == "Water"]
 )
 
-surv.fit.water <- survfit(foosurv ~ 1 #not sure why we do it as a function of "1" but it works?
+surv.fit.water.clump <- survfit(foosurv ~ 1 #not sure why we do it as a function of "1" but it works?
 )
 
-####Make our survive for AIR#
+####Clumped Water Survival...####
 foosurv <- Surv(
-  #time = Start of the time interval Note: our mussels could've started at different times. We controlled for this by measuring our mussels on Monday or Tuesday so we should be good on this
-  time = TIMESTART[LT50Data$air_water == "Air"], 
-  #time 2 = The time we assessed, aka the end of our interval
+   time = TIMESTART[LT50Data$air_water == "Air"], 
   time2 = TIMESURV[LT50Data$air_water == "Air"], 
-  #event = whether the death happened at time 2 (at time of assessment) We luckily had a "dead" coloumn already so this was covered.
   event = dead[LT50Data$air_water == "Air"]
 )
-surv.fit.air <- survfit(foosurv ~ 1 #not sure why we do it as a function of "1" but it works?
-)
+surv.fit.air.clump <- survfit(foosurv ~ 1)
 
-plot(surv.fit.air)
+plot(surv.fit.water.clump, col='blue')
 ###Make the KM Plot...####
 
+#Get your color palettes
+ColorAirSol <- c('','','','')
+ColorAirSol <- c('','','','')
+ColorAirSol <- c('','','','')
+ColorAirSol <- c('','','','')
+#Alternative color:
 wes.colors<-wes_palette('Cavalcanti', 4)
 
 # Use NJS plot code and adapt 
@@ -76,9 +73,11 @@ plot(0,type='n', #make empty plot
      main = 'Air Survival', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.5) # make empty plot to fill in 
-points(surv.fit.test.air$time, surv.fit.test.air$surv, type = 's', col = wes.colors[1], lwd = 2)
-lines(surv.fit.test.air, col = wes.colors[1], lwd = 2)
-lines(surv.fit.test.water,col = wes.colors[2], lwd = 2)
+
+points(surv.fit.air.clump$time, surv.fit.air.clump$surv, type = 's', col = wes.colors[1], lwd = 2)
+points(surv.fit.water.clump$time,surv.fit.water.clump$surv, type = 's', col = wes.colors[2], lwd = 2)
+
+
 # x-axis labels
 axis(1, at=c(1,2,3,4), labels= data.summary2$gen.name, cex.axis=1.2, # text size
      las = 1, tick = FALSE) 
