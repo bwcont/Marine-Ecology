@@ -21,8 +21,8 @@ library(OIsurv)
 library(wesanderson)
 
 #Pull in data
-setwd("C:/SaveHere")
-LT50Data <- read.csv("EC/DataExtrapolate.csv")
+setwd("C:/SaveHere/EC")
+LT50Data <- read.csv("DataExtrapolate.csv")
 attach(LT50Data)
 
 #Check the data looks ok
@@ -33,62 +33,63 @@ View(LT50Data)
 ###Subsets..####
 #Air
 #Sol
-ASBA <- subset(LT50Data, LT50Data$ID == 'Air.Solitary.Biweek.A')
-ASBB<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Biweek.B')
-ASBC<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Biweek.C')
-ASDA<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Day.A')
-ASDB<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Day.B')
-ASDC<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Day.C')
-ASWA<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Week.A')
-ASWB<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Week.B')
-ASWC<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Week.C')
-ASTA<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Triweek.A')
-ASTB<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Triweek.B')
-ASTC<-subset(LT50Data, LT50Data$ID == 'Air.Solitary.Triweek.C')
+ASBA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.biweek.A')
+ASBB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.biweek.B')
+ASBC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.biweek.C')
+ASDA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.day.A')
+ASDB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.day.B')
+ASDC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.day.C')
+ASWA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.week.A')
+ASWB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.week.B')
+ASWC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.week.C')
+ASTA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.triweek.A')
+ASTB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.triweek.B')
+ASTC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.triweek.C')
 #TP
-ATBA<-subset(LT50Data, LT50Data$ID == 'Air.TP.Biweek.A')
-ATBB<-subset(LT50Data, LT50Data$ID == 'Air.TP.Biweek.B')
-ATBC<-subset(LT50Data, LT50Data$ID == 'Air.TP.Biweek.C')
-ATDA<-subset(LT50Data, LT50Data$ID == 'Air.TP.Day.A')
-ATDB<-subset(LT50Data, LT50Data$ID == 'Air.TP.Day.B')
-ATDC<-subset(LT50Data, LT50Data$ID == 'Air.TP.Day.C')
-ATWA<-subset(LT50Data, LT50Data$ID == 'Air.TP.Week.A')
-ATWB<-subset(LT50Data, LT50Data$ID == 'Air.TP.Week.B')
-ATWC<-subset(LT50Data, LT50Data$ID == 'Air.TP.Week.C')
-ATTA<-subset(LT50Data, LT50Data$ID == 'Air.TP.Triweek.A')
-ATTB<-subset(LT50Data, LT50Data$ID == 'Air.TP.Triweek.B')
-ATTC<-subset(LT50Data, LT50Data$ID == 'Air.TP.Triweek.C')
+ATBA<-subset(LT50Data, LT50Data$name == 'Air.TP.biweek.A')
+ATBB<-subset(LT50Data, LT50Data$name == 'Air.TP.biweek.B')
+ATBC<-subset(LT50Data, LT50Data$name == 'Air.TP.biweek.C')
+ATDA<-subset(LT50Data, LT50Data$name == 'Air.TP.day.A')
+ATDB<-subset(LT50Data, LT50Data$name == 'Air.TP.day.B')
+ATDC<-subset(LT50Data, LT50Data$name == 'Air.TP.day.C')
+ATWA<-subset(LT50Data, LT50Data$name == 'Air.TP.week.A')
+ATWB<-subset(LT50Data, LT50Data$name == 'Air.TP.week.B')
+ATWC<-subset(LT50Data, LT50Data$name == 'Air.TP.week.C')
+ATTA<-subset(LT50Data, LT50Data$name == 'Air.TP.triweek.A')
+ATTB<-subset(LT50Data, LT50Data$name == 'Air.TP.triweek.B')
+ATTC<-subset(LT50Data, LT50Data$name == 'Air.TP.triweek.C')
 
 #Water
 #Sol
-WSBA<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Biweek.A')
-WSBB<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Biweek.B')
-WSBC<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Biweek.C')
-WSDA<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Day.A')
-WSDB<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Day.B')
-WSDC<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Day.C')
-WSWA<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Week.A')
-WSWB<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Week.B')
-WSWC<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Week.C')
-WSTA<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Triweek.A')
-WSTB<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Triweek.B')
-WSTC<-subset(LT50Data, LT50Data$ID == 'Water.Solitary.Triweek.C')
+WSBA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.biweek.A')
+WSBB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.biweek.B')
+WSBC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.biweek.C')
+WSDA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.day.A')
+WSDB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.day.B')
+WSDC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.day.C')
+WSWA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.week.A')
+WSWB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.week.B')
+WSWC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.week.C')
+WSTA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.triweek.A')
+WSTB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.triweek.B')
+WSTC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.triweek.C')
 #TP
-WTBA<-subset(LT50Data, LT50Data$ID == 'Water.TP.Biweek.A')
-WTBB<-subset(LT50Data, LT50Data$ID == 'Water.TP.Biweek.B')
-WTBC<-subset(LT50Data, LT50Data$ID == 'Water.TP.Biweek.C')
-WTDA<-subset(LT50Data, LT50Data$ID == 'Water.TP.Day.A')
-WTDB<-subset(LT50Data, LT50Data$ID == 'Water.TP.Day.B')
-WTDC<-subset(LT50Data, LT50Data$ID == 'Water.TP.Day.C')
-WTWA<-subset(LT50Data, LT50Data$ID == 'Water.TP.Week.A')
-WTWB<-subset(LT50Data, LT50Data$ID == 'Water.TP.Week.B')
-WTWC<-subset(LT50Data, LT50Data$ID == 'Water.TP.Week.C')
-WTTA<-subset(LT50Data, LT50Data$ID == 'Water.TP.Triweek.A')
-WTTB<-subset(LT50Data, LT50Data$ID == 'Water.TP.Triweek.B')
-WTTC<-subset(LT50Data, LT50Data$ID == 'Water.TP.Triweek.C')
+WTBA<-subset(LT50Data, LT50Data$name == 'Water.TP.biweek.A')
+WTBB<-subset(LT50Data, LT50Data$name == 'Water.TP.biweek.B')
+WTBC<-subset(LT50Data, LT50Data$name == 'Water.TP.biweek.C')
+WTDA<-subset(LT50Data, LT50Data$name == 'Water.TP.day.A')
+WTDB<-subset(LT50Data, LT50Data$name == 'Water.TP.day.B')
+WTDC<-subset(LT50Data, LT50Data$name == 'Water.TP.day.C')
+WTWA<-subset(LT50Data, LT50Data$name == 'Water.TP.week.A')
+WTWB<-subset(LT50Data, LT50Data$name == 'Water.TP.week.B')
+WTWC<-subset(LT50Data, LT50Data$name == 'Water.TP.week.C')
+WTTA<-subset(LT50Data, LT50Data$name == 'Water.TP.triweek.A')
+WTTB<-subset(LT50Data, LT50Data$name == 'Water.TP.triweek.B')
+WTTC<-subset(LT50Data, LT50Data$name == 'Water.TP.triweek.C')
+#####
 
-#####MAke Reults Matrix...####
-
+small<-list(ASBA, ASBB, ASBC, ASDA, ASDB, ASDC, ASWA, ASWB, ASWC, ASTA, ASTB, ASTC, ATBA, ATBB, ATBC, ATDA, ATDB, ATDC, ATWA, ATWB, ATWC, ATTA, ATTB, ATTC, WSBA, WSBB, WSBC, WSDA, WSDB, WSDC, WSWA, WSWB, WSWC, WSTA, WSTB, WSTC, WTBA, WTBB, WTBC, WTDA, WTDB, WTDC, WTWA, WTWB, WTWC, WTTA, WTTB, WTTC)
+unique(small)
 
 # make results matrix
 results<-matrix(nrow = 48, ncol = 5)
@@ -97,19 +98,16 @@ colnames(results)<-c('name', 'LT50', 'se', 'n', 'gen.name' )
 rownames(results)<-c(1:48)
 results
 
-#MAke list of subsets
-small<-list(ASBA, ASBB, ASBC, ASDA, ASDB, ASDC, ASWA, ASWB, ASWC, ASTA, ASTB, ASTC, ATBA, ATBB, ATBC, ATDA, ATDB, ATDC, ATWA, ATWB, ATWC, ATTA, ATTB, ATTC, WSBA, WSBB, WSBC, WSDA, WSDB, WSDC, WSWA, WSWB, WSWC, WSTA, WSTB, WSTC, WTBA, WTBB, WTBC, WTDA, WTDB, WTDC, WTWA, WTWB, WTWC, WTTA, WTTB, WTTC)
-unique(small)
 #Loop for LT50
 for(i in 1:48) {
   temp <- small[i] 
-  temp<-as.data.frame(temp, na.rm = TRUE)
-  temp.y <- cbind(SURVIVAL, EVENT)
-  temp.model <- glm(temp.y ~  TempTreatment, binomial)
+  temp<-as.data.frame(temp)
+  temp.y <- cbind(temp$alive, temp$dead)
+  temp.model <- glm(temp.y ~ temp$tmt_temp , binomial)
   results[i,2] <- dose.p(temp.model)
   se<-attr(dose.p(temp.model), 'SE')
   results[i,3]<-matrix(se)
-  results[i,4]<-length(temp$dead[!is.na(temp$dead)])
+  results[i,4]<-length(temp$dead)
 }   
 
 View(results)
@@ -118,13 +116,64 @@ results[,1]<-c('ASBA', 'ASBB', 'ASBC', "ASDA", 'ASDB', 'ASDC', 'ASWA', 'ASWB', '
 
 results[,5]<-c('ASB', 'ASB', 'ASB', "ASD", 'ASD', 'ASD', 'ASW', 'ASW', 'ASW', 'AST', 'AST', 'AST', 'ATB', 'ATB', 'ATB', 'ATD', 'ATD', 'ATD', 'ATW', 'ATW', 'ATW', 'ATT', 'ATT', 'ATT', 'WSB', 'WSB', 'WSB', 'WSD', 'WSD', 'WSD', 'WSW', 'WSW', 'WSW', 'WST', 'WST', 'WST', 'WTB', 'WTB', 'WTB', 'WTD', 'WTD', 'WTD', 'WTW', 'WTW', 'WTW', 'WTT', 'WTT', 'WTT')
 
-############################################################################################XXXXXXXXXXXXXXXXXXXXXX##############
-############################################################################################XXXXXXXXXXXXXXXXXXXXXX##############
-#####Make the Jelly Bean groups.....#####
-#Groups will be combined across time so we only have four groups:
-AirSol <- c()
-AirTP <- 
-  WaterSol <- 
-  WaterTP <- 
-  
-  
+
+#JellyBean...####
+data.summary<-ddply(results, c('gen.name'), summarize,
+                    mean.lt50 = mean(LT50, na.rm = TRUE), 
+                    N = sum(!is.na(LT50)),
+                    se.lt50 = sd(LT50, na.rm = TRUE)/sqrt(N))
+
+data.summary$se.plus<-(data.summary$mean.lt50 + data.summary$se.lt50)
+
+data.summary$se.minus<-(data.summary$mean.lt50 - data.summary$se.lt50)
+
+data.summary
+data.summary2<-data.summary[1:4,]
+data.summary2<-data.summary2[c(2,4,1,3),]
+
+plot(0,type='n', #make empty plot 
+     xlim=c(0.75,4.25) # x limits
+     , ylim=c(24, 36) # y limits 
+     , xlab= '', # name x azis
+     ylab = 'LT50', # name y axis
+     main = 'Air Solitary', # main title (on middle of plot)
+     pch=19, yaxt='n', axes=F, # removed axes
+     cex.lab=1.05) # make empty plot to fill in 
+
+arrows(c(1,2,3,4), data.summary2$se.plus, # bottom of arrows
+       c(1,2,3,4), data.summary2$se.minus, # top of arrows
+       angle = 90, code = 3, length = 0, lty = 1, lwd = 30, # jelly bean width
+       col = palette(rainbow(4, s = 0.9, v = 1)))
+
+# x-axis labels
+axis(1, at=c(1,2,3,4), labels= data.summary2$gen.name, cex.axis=1.2, # text size
+     las = 1, tick = FALSE) 
+
+# add in points
+points(c(1,2,3,4), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
+
+# 
+axis(2, cex.axis=1.2, tick = FALSE)
+box()
+
+
+
+
+
+
+
+
+#########
+
+
+
+
+
+
+
+
+
+
+
+
+
