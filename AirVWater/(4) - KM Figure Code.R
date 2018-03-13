@@ -54,6 +54,9 @@ foosurv <- Surv(
 surv.fit.air.clump <- survfit(foosurv ~ 1)
 
 plot(surv.fit.water.clump, col='blue')
+####Air Solitary Survival Split by Temp...####
+
+
 ###Plot Color Set-Up...####
 #Get your color palettes
 ColorAirSol <- c('','','','')
@@ -63,7 +66,7 @@ ColorAirSol <- c('','','','')
 #Alternative color:
 wes.colors<-wes_palette('Cavalcanti', 4)
 
-
+###Make Plot General/Example...####
 plot(0,type='n', #make empty plot 
      xlim=c(0,21) # x limits
      , ylim=c(0,1) # y limits 
@@ -81,6 +84,51 @@ axis(1, at=c(1,2,3,4), labels= data.summary2$gen.name, cex.axis=1.2, # text size
      las = 1, tick = FALSE) 
 # add in points
 points(c(1,2,3,4), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
-# 
 axis(2, cex.axis=1.2, tick = FALSE)
 box()
+
+###Specific Plot(empty at the moment)...#####
+
+
+
+######
+
+
+
+
+
+
+
+###############
+#######
+######
+#####
+####
+###
+##
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
