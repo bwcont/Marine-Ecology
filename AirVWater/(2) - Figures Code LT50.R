@@ -1,206 +1,207 @@
- #~R Code~#
- ##############################################################
- ########### Title: LT50 Figure Code
- ########### By: L. Pandori & E. Cruz 
- ########### Based on: N. Silbinger and L. Miller    
- ########### Created: 3/12/18          
- ########### Edited: 3/13/18          
- ##############################################################
- 
- ###Setup..####
- # clear list
- rm(list=ls())
- 
- #load all packages
- library(plyr)
- library(MASS)
- library(dplyr)
- library(KMsurv)
- library(survival)
- library(OIsurv)
- library(wesanderson)
- 
- #Pull in data
- setwd("C:/SaveHere/EC")
- LT50Data <- read.csv("DataExtrapolate.csv")
- attach(LT50Data)
- 
- #Check the data looks ok
- head(LT50Data)
- tail(LT50Data)
- View(LT50Data)
- 
- ###Subsets..####
- #Air
- #Sol
- ASBA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.biweek.A')
- ASBB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.biweek.B')
- ASBC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.biweek.C')
- ASDA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.day.A')
- ASDB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.day.B')
- ASDC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.day.C')
- ASWA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.week.A')
- ASWB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.week.B')
- ASWC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.week.C')
- ASTA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.triweek.A')
- ASTB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.triweek.B')
- ASTC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.triweek.C')
- #TP
- ATBA<-subset(LT50Data, LT50Data$name == 'Air.TP.biweek.A')
- ATBB<-subset(LT50Data, LT50Data$name == 'Air.TP.biweek.B')
- ATBC<-subset(LT50Data, LT50Data$name == 'Air.TP.biweek.C')
- ATDA<-subset(LT50Data, LT50Data$name == 'Air.TP.day.A')
- ATDB<-subset(LT50Data, LT50Data$name == 'Air.TP.day.B')
- ATDC<-subset(LT50Data, LT50Data$name == 'Air.TP.day.C')
- ATWA<-subset(LT50Data, LT50Data$name == 'Air.TP.week.A')
- ATWB<-subset(LT50Data, LT50Data$name == 'Air.TP.week.B')
- ATWC<-subset(LT50Data, LT50Data$name == 'Air.TP.week.C')
- ATTA<-subset(LT50Data, LT50Data$name == 'Air.TP.triweek.A')
- ATTB<-subset(LT50Data, LT50Data$name == 'Air.TP.triweek.B')
- ATTC<-subset(LT50Data, LT50Data$name == 'Air.TP.triweek.C')
- 
- #Water
- #Sol
- WSBA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.biweek.A')
- WSBB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.biweek.B')
- WSBC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.biweek.C')
- WSDA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.day.A')
- WSDB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.day.B')
- WSDC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.day.C')
- WSWA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.week.A')
- WSWB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.week.B')
- WSWC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.week.C')
- WSTA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.triweek.A')
- WSTB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.triweek.B')
- WSTC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.triweek.C')
- #TP
- WTBA<-subset(LT50Data, LT50Data$name == 'Water.TP.biweek.A')
- WTBB<-subset(LT50Data, LT50Data$name == 'Water.TP.biweek.B')
- WTBC<-subset(LT50Data, LT50Data$name == 'Water.TP.biweek.C')
- WTDA<-subset(LT50Data, LT50Data$name == 'Water.TP.day.A')
- WTDB<-subset(LT50Data, LT50Data$name == 'Water.TP.day.B')
- WTDC<-subset(LT50Data, LT50Data$name == 'Water.TP.day.C')
- WTWA<-subset(LT50Data, LT50Data$name == 'Water.TP.week.A')
- WTWB<-subset(LT50Data, LT50Data$name == 'Water.TP.week.B')
- WTWC<-subset(LT50Data, LT50Data$name == 'Water.TP.week.C')
- WTTA<-subset(LT50Data, LT50Data$name == 'Water.TP.triweek.A')
- WTTB<-subset(LT50Data, LT50Data$name == 'Water.TP.triweek.B')
- WTTC<-subset(LT50Data, LT50Data$name == 'Water.TP.triweek.C')
- ###Loop for LT50s...####
- 
- small<-list(ASBA, ASBB, ASBC, ASDA, ASDB, ASDC, ASWA, ASWB, ASWC, ASTA, ASTB, ASTC, ATBA, ATBB, ATBC, ATDA, ATDB, ATDC, ATWA, ATWB, ATWC, ATTA, ATTB, ATTC, WSBA, WSBB, WSBC, WSDA, WSDB, WSDC, WSWA, WSWB, WSWC, WSTA, WSTB, WSTC, WTBA, WTBB, WTBC, WTDA, WTDB, WTDC, WTWA, WTWB, WTWC, WTTA, WTTB, WTTC)
- unique(small)
- 
- # make results matrix
- results<-matrix(nrow = 48, ncol = 6)
- results<-as.data.frame(results)
- colnames(results)<-c('name', 'LT50', 'se', 'n', 'gen.name', 'clump.name' )
- rownames(results)<-c(1:48)
- results
- 
- #Loop for LT50
- for(i in 1:48) {
-   temp <- small[i] 
-   temp<-as.data.frame(temp)
-   temp.y <- cbind(temp$alive, temp$dead)
-   temp.model <- glm(temp.y ~ temp$tmt_temp , binomial)
-   results[i,2] <- dose.p(temp.model)
-   se<-attr(dose.p(temp.model), 'SE')
-   results[i,3]<-matrix(se)
-   results[i,4]<-length(temp$dead)
- }   
- 
- View(results)
- 
- results[,1]<-c('ASBA', 'ASBB', 'ASBC', "ASDA", 'ASDB', 'ASDC', 'ASWA', 'ASWB', 'ASWC', 'ASTA', 'ASTB', 'ASTC', 'ATBA', 'ATBB', 'ATBC', 'ATDA', 'ATDB', 'ATDC', 'ATWA', 'ATWB', 'ATWC', 'ATTA', 'ATTB', 'ATTC', 'WSBA', 'WSBB', 'WSBC', 'WSDA', 'WSDB', 'WSDC', 'WSWA', 'WSWB', 'WSWC', 'WSTA', 'WSTB', 'WSTC', 'WTBA', 'WTBB', 'WTBC', 'WTDA', 'WTDB', 'WTDC', 'WTWA', 'WTWB', 'WTWC', 'WTTA', 'WTTB', 'WTTC')
- 
- results[,5]<-c('ASB', 'ASB', 'ASB', "ASD", 'ASD', 'ASD', 'ASW', 'ASW', 'ASW', 'AST', 'AST', 'AST', 'ATB', 'ATB', 'ATB', 'ATD', 'ATD', 'ATD', 'ATW', 'ATW', 'ATW', 'ATT', 'ATT', 'ATT', 'WSB', 'WSB', 'WSB', 'WSD', 'WSD', 'WSD', 'WSW', 'WSW', 'WSW', 'WST', 'WST', 'WST', 'WTB', 'WTB', 'WTB', 'WTD', 'WTD', 'WTD', 'WTW', 'WTW', 'WTW', 'WTT', 'WTT', 'WTT')
- 
- results[,6]<-c('Air Solitary', 'Air Solitary', 'Air Solitary', "Air Solitary", 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool')
- 
- ###JellyBean All...####
- #Get a data summary to extract your plus and minuses
- data.summary<-ddply(results, c('gen.name'), summarize,
-                     mean.lt50 = mean(LT50, na.rm = TRUE), 
-                     N = sum(!is.na(LT50)),
-                     se.lt50 = sd(LT50, na.rm = TRUE)/sqrt(N))
- 
- #Get the plus and minus of your points
- data.summary$se.plus<-(data.summary$mean.lt50 + data.summary$se.lt50)
- data.summary$se.minus<-(data.summary$mean.lt50 - data.summary$se.lt50)
- 
- 
- data.summary
- data.summary2<-data.summary[1:16,]
- data.summary2<-data.summary2[c(2,4,1,3,6,8,5,7,10,12,9,11,14,16,13,15),]
- 
- #plot jellybean
- plot(0,type='n', #make empty plot 
-      xlim=c(0.75,16.25) # x limits
-      , ylim=c(24, 40) # y limits 
-      , xlab= '', # name x azis
-      ylab = 'LT50', # name y axis
-      main = 'All LT50s', # main title (on middle of plot)
-      pch=19, yaxt='n', axes=F, # removed axes
-      cex.lab=1.05) # make empty plot to fill in 
- 
- arrows(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), data.summary2$se.plus, # bottom of arrows
-        c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), data.summary2$se.minus, # top of arrows
-        angle = 90, code = 3, length = 0, lty = 1, lwd = 30, # jelly bean width
-        col = palette(rainbow(16, s = 0.9, v = 1)))
- 
- # x-axis labels
- axis(1, at=c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), labels= data.summary2$gen.name, cex.axis=1.2, # text size
-      las = 1, tick = FALSE) 
- 
- # add in points
- points(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
- 
- # Get the outline of the box
- axis(2, cex.axis=1.2, tick = FALSE)
- box()
- 
- ###JellyBean Time clumped...########
- #This one is clumped because of the 5th row in the "results"
- data.summary<-ddply(results, c('clump.name'), summarize,
-                     mean.lt50 = mean(LT50, na.rm = TRUE), 
-                     N = sum(!is.na(LT50)),
-                     se.lt50 = sd(LT50, na.rm = TRUE)/sqrt(N))
- #Get the plus and minus of your points
- data.summary$se.plus<-(data.summary$mean.lt50 + data.summary$se.lt50)
- data.summary$se.minus<-(data.summary$mean.lt50 - data.summary$se.lt50)
- data.summary
- data.summary2<-data.summary[1:4,]
- data.summary2<-data.summary2[c(1,2,3,4),]
- #plot jellybean
- plot(0,type='n', #make empty plot 
-      xlim=c(0.75,4.25) # x limits
-      , ylim=c(28, 36) # y limits 
-      , xlab= '', # name x azis
-      ylab = 'LT50', # name y axis
-      main = 'All LT50s', # main title (on middle of plot)
-      pch=19, yaxt='n', axes=F, # removed axes
-      cex.lab=1.05) # make empty plot to fill in 
- #Colors!
- FourColors <- c('#F2D1A8','#7E6752','#AED09E','#61B292')
- arrows(c(1,2,3,4), data.summary2$se.plus, # bottom of arrows
-        c(1,2,3,4), data.summary2$se.minus, # top of arrows
-        angle = 90, code = 3, length = 0, lty = 1, lwd = 30, # jelly bean width
-        col = FourColors)
- # x-axis labels
- axis(1, at=c(1,2,3,4), labels= data.summary2$clump.name, cex.axis=1.2, # text size
-      las = 1, tick = FALSE) 
- # add in points
- points(c(1,2,3,4), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
- # Get the outline of the box
- axis(2, cex.axis=1.2, tick = FALSE)
- box()
- 
- 
- 
- #####################
- #####
- ####
- ###
- ##
- #
+#~R Code~#
+##############################################################
+########### Title: LT50 Figure Code
+########### By: L. Pandori & E. Cruz 
+########### Based on: N. Silbinger and L. Miller    
+########### Created: 3/12/18          
+########### Edited: 3/13/18          
+##############################################################
+
+###Setup..####
+# clear list
+rm(list=ls())
+
+#load all packages
+library(plyr)
+library(MASS)
+library(dplyr)
+library(KMsurv)
+library(survival)
+library(OIsurv)
+library(wesanderson)
+
+#Pull in data
+setwd("C:/SaveHere/EC")
+LT50Data <- read.csv("DataExtrapolate.csv")
+attach(LT50Data)
+
+#Check the data looks ok
+head(LT50Data)
+tail(LT50Data)
+View(LT50Data)
+
+###Subsets..####
+#Air
+#Sol
+ASBA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.biweek.A')
+ASBB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.biweek.B')
+ASBC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.biweek.C')
+ASDA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.day.A')
+ASDB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.day.B')
+ASDC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.day.C')
+ASWA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.week.A')
+ASWB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.week.B')
+ASWC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.week.C')
+ASTA<-subset(LT50Data, LT50Data$name == 'Air.Solitary.triweek.A')
+ASTB<-subset(LT50Data, LT50Data$name == 'Air.Solitary.triweek.B')
+ASTC<-subset(LT50Data, LT50Data$name == 'Air.Solitary.triweek.C')
+#TP
+ATBA<-subset(LT50Data, LT50Data$name == 'Air.TP.biweek.A')
+ATBB<-subset(LT50Data, LT50Data$name == 'Air.TP.biweek.B')
+ATBC<-subset(LT50Data, LT50Data$name == 'Air.TP.biweek.C')
+ATDA<-subset(LT50Data, LT50Data$name == 'Air.TP.day.A')
+ATDB<-subset(LT50Data, LT50Data$name == 'Air.TP.day.B')
+ATDC<-subset(LT50Data, LT50Data$name == 'Air.TP.day.C')
+ATWA<-subset(LT50Data, LT50Data$name == 'Air.TP.week.A')
+ATWB<-subset(LT50Data, LT50Data$name == 'Air.TP.week.B')
+ATWC<-subset(LT50Data, LT50Data$name == 'Air.TP.week.C')
+ATTA<-subset(LT50Data, LT50Data$name == 'Air.TP.triweek.A')
+ATTB<-subset(LT50Data, LT50Data$name == 'Air.TP.triweek.B')
+ATTC<-subset(LT50Data, LT50Data$name == 'Air.TP.triweek.C')
+
+#Water
+#Sol
+WSBA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.biweek.A')
+WSBB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.biweek.B')
+WSBC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.biweek.C')
+WSDA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.day.A')
+WSDB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.day.B')
+WSDC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.day.C')
+WSWA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.week.A')
+WSWB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.week.B')
+WSWC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.week.C')
+WSTA<-subset(LT50Data, LT50Data$name == 'Water.Solitary.triweek.A')
+WSTB<-subset(LT50Data, LT50Data$name == 'Water.Solitary.triweek.B')
+WSTC<-subset(LT50Data, LT50Data$name == 'Water.Solitary.triweek.C')
+#TP
+WTBA<-subset(LT50Data, LT50Data$name == 'Water.TP.biweek.A')
+WTBB<-subset(LT50Data, LT50Data$name == 'Water.TP.biweek.B')
+WTBC<-subset(LT50Data, LT50Data$name == 'Water.TP.biweek.C')
+WTDA<-subset(LT50Data, LT50Data$name == 'Water.TP.day.A')
+WTDB<-subset(LT50Data, LT50Data$name == 'Water.TP.day.B')
+WTDC<-subset(LT50Data, LT50Data$name == 'Water.TP.day.C')
+WTWA<-subset(LT50Data, LT50Data$name == 'Water.TP.week.A')
+WTWB<-subset(LT50Data, LT50Data$name == 'Water.TP.week.B')
+WTWC<-subset(LT50Data, LT50Data$name == 'Water.TP.week.C')
+WTTA<-subset(LT50Data, LT50Data$name == 'Water.TP.triweek.A')
+WTTB<-subset(LT50Data, LT50Data$name == 'Water.TP.triweek.B')
+WTTC<-subset(LT50Data, LT50Data$name == 'Water.TP.triweek.C')
+###Loop for LT50s...####
+
+small<-list(ASBA, ASBB, ASBC, ASDA, ASDB, ASDC, ASWA, ASWB, ASWC, ASTA, ASTB, ASTC, ATBA, ATBB, ATBC, ATDA, ATDB, ATDC, ATWA, ATWB, ATWC, ATTA, ATTB, ATTC, WSBA, WSBB, WSBC, WSDA, WSDB, WSDC, WSWA, WSWB, WSWC, WSTA, WSTB, WSTC, WTBA, WTBB, WTBC, WTDA, WTDB, WTDC, WTWA, WTWB, WTWC, WTTA, WTTB, WTTC)
+unique(small)
+
+# make results matrix
+results<-matrix(nrow = 48, ncol = 6)
+results<-as.data.frame(results)
+colnames(results)<-c('name', 'LT50', 'se', 'n', 'gen.name', 'clump.name' )
+rownames(results)<-c(1:48)
+results
+
+#Loop for LT50
+for(i in 1:48) {
+  temp <- small[i] 
+  temp<-as.data.frame(temp)
+  temp.y <- cbind(temp$alive, temp$dead)
+  temp.model <- glm(temp.y ~ temp$tmt_temp , binomial)
+  results[i,2] <- dose.p(temp.model)
+  se<-attr(dose.p(temp.model), 'SE')
+  results[i,3]<-matrix(se)
+  results[i,4]<-length(temp$dead)
+}   
+
+View(results)
+
+results[,1]<-c('ASBA', 'ASBB', 'ASBC', "ASDA", 'ASDB', 'ASDC', 'ASWA', 'ASWB', 'ASWC', 'ASTA', 'ASTB', 'ASTC', 'ATBA', 'ATBB', 'ATBC', 'ATDA', 'ATDB', 'ATDC', 'ATWA', 'ATWB', 'ATWC', 'ATTA', 'ATTB', 'ATTC', 'WSBA', 'WSBB', 'WSBC', 'WSDA', 'WSDB', 'WSDC', 'WSWA', 'WSWB', 'WSWC', 'WSTA', 'WSTB', 'WSTC', 'WTBA', 'WTBB', 'WTBC', 'WTDA', 'WTDB', 'WTDC', 'WTWA', 'WTWB', 'WTWC', 'WTTA', 'WTTB', 'WTTC')
+
+results[,5]<-c('ASB', 'ASB', 'ASB', "ASD", 'ASD', 'ASD', 'ASW', 'ASW', 'ASW', 'AST', 'AST', 'AST', 'ATB', 'ATB', 'ATB', 'ATD', 'ATD', 'ATD', 'ATW', 'ATW', 'ATW', 'ATT', 'ATT', 'ATT', 'WSB', 'WSB', 'WSB', 'WSD', 'WSD', 'WSD', 'WSW', 'WSW', 'WSW', 'WST', 'WST', 'WST', 'WTB', 'WTB', 'WTB', 'WTD', 'WTD', 'WTD', 'WTW', 'WTW', 'WTW', 'WTT', 'WTT', 'WTT')
+
+results[,6]<-c('Air Solitary', 'Air Solitary', 'Air Solitary', "Air Solitary", 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool')
+
+###JellyBean All...####
+#Get a data summary to extract your plus and minuses
+data.summary<-ddply(results, c('gen.name'), summarize,
+                    mean.lt50 = mean(LT50, na.rm = TRUE), 
+                    N = sum(!is.na(LT50)),
+                    se.lt50 = sd(LT50, na.rm = TRUE)/sqrt(N))
+
+#Get the plus and minus of your points
+data.summary$se.plus<-(data.summary$mean.lt50 + data.summary$se.lt50)
+data.summary$se.minus<-(data.summary$mean.lt50 - data.summary$se.lt50)
+
+
+data.summary
+data.summary2<-data.summary[1:16,]
+data.summary2<-data.summary2[c(2,4,1,3,6,8,5,7,10,12,9,11,14,16,13,15),]
+
+#plot jellybean
+plot(0,type='n', #make empty plot 
+     xlim=c(0.75,16.25) # x limits
+     , ylim=c(24, 40) # y limits 
+     , xlab= '', # name x azis
+     ylab = 'LT50', # name y axis
+     main = 'All LT50s', # main title (on middle of plot)
+     pch=19, yaxt='n', axes=F, # removed axes
+     cex.lab=1.05) # make empty plot to fill in 
+
+arrows(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), data.summary2$se.plus, # bottom of arrows
+       c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), data.summary2$se.minus, # top of arrows
+       angle = 90, code = 3, length = 0, lty = 1, lwd = 30, # jelly bean width
+       col = palette(rainbow(16, s = 0.9, v = 1)))
+
+# x-axis labels
+axis(1, at=c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), labels= data.summary2$gen.name, cex.axis=1.2, # text size
+     las = 1, tick = FALSE) 
+
+# add in points
+points(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
+
+# Get the outline of the box
+axis(2, cex.axis=1.2, tick = FALSE)
+box()
+
+###JellyBean Time clumped...########
+#This one is clumped because of the 5th row in the "results"
+data.summary<-ddply(results, c('clump.name'), summarize,
+                    mean.lt50 = mean(LT50, na.rm = TRUE), 
+                    N = sum(!is.na(LT50)),
+                    se.lt50 = sd(LT50, na.rm = TRUE)/sqrt(N))
+#Get the plus and minus of your points
+data.summary$se.plus<-(data.summary$mean.lt50 + data.summary$se.lt50)
+data.summary$se.minus<-(data.summary$mean.lt50 - data.summary$se.lt50)
+data.summary
+data.summary2<-data.summary[1:4,]
+data.summary2<-data.summary2[c(1,2,3,4),]
+#plot jellybean
+plot(0,type='n', #make empty plot 
+     xlim=c(0.75,4.25) # x limits
+     , ylim=c(28, 36) # y limits 
+     , xlab= '', # name x azis
+     ylab = 'LT50', # name y axis
+     main = 'All LT50s', # main title (on middle of plot)
+     pch=19, yaxt='n', axes=F, # removed axes
+     cex.lab=1.05) # make empty plot to fill in 
+#Colors!
+FourColors <- c('#A9C52F','#FF5200', '#8FB1E9','#7A2E7A')
+#add Jellybeans into plot
+arrows(c(1,2,3,4), data.summary2$se.plus, # bottom of arrows
+       c(1,2,3,4), data.summary2$se.minus, # top of arrows
+       angle = 90, code = 3, length = 0, lty = 1, lwd = 30, # jelly bean width
+       col = FourColors)
+# x-axis labels
+axis(1, at=c(1,2,3,4), labels= data.summary2$clump.name, cex.axis=1.2, # text size
+     las = 1, tick = FALSE) 
+# add in points
+points(c(1,2,3,4), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
+# Get the outline of the box
+axis(2, cex.axis=1.2, tick = FALSE)
+box()
+
+
+
+#####################
+#####
+####
+###
+##
+#
