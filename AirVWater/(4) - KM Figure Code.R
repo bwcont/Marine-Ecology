@@ -188,16 +188,12 @@ points(surv.fit.air.sol.32$time, surv.fit.air.sol.32$surv, type = 's', col = Blu
 points(surv.fit.air.sol.36$time, surv.fit.air.sol.36$surv, type = 's', col = BlueColorGradient[3], lwd = 2)
 points(surv.fit.air.sol.40$time+0.2, surv.fit.air.sol.40$surv, type = 's', col = BlueColorGradient[4], lwd = 2)
 
-
 # x-axis labels
 axis(2, cex.axis=1.2, tick = FALSE)
 box()
-
-###Specific Plot(empty at the moment)...#####
-
-
-
-######
+# y-axis labels
+axis(1, cex.axis=1.2, tick = FALSE)
+box()
 
 ####Air Solitary Survival Split by Temp...####
 plot(0,type='n', #make empty plot 
@@ -214,13 +210,17 @@ points(surv.fit.air.sol.32$time, surv.fit.air.sol.32$surv, type = 's', col = Col
 points(surv.fit.air.sol.36$time, surv.fit.air.sol.36$surv, type = 's', col = ColorAirSol[3], lwd = 2)
 points(surv.fit.air.sol.40$time+0.2, surv.fit.air.sol.40$surv, type = 's', col = ColorAirSol[4], lwd = 2)
 
+axis(2, cex.axis=1.2, tick = FALSE)
+box()
+axis(1, cex.axis=1.2, tick = FALSE)
+
 ####Air TP Survival Split by Temp...####
 plot(0,type='n', #make empty plot 
      xlim=c(0,21) # x limits
      , ylim=c(0,1) # y limits 
      , xlab= 'Time (days)', # name x azis
      ylab = 'Survival Function', # name y axis
-     main = 'Air Solitary Survival', # main title (on middle of plot)
+     main = 'Air Tidepool Survival', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.5) # make empty plot to fill in 
 
@@ -229,7 +229,9 @@ points(surv.fit.air.tp.32$time, surv.fit.air.tp.32$surv, type = 's', col = Color
 points(surv.fit.air.tp.36$time, surv.fit.air.tp.36$surv, type = 's', col = ColorAirTP[3], lwd = 2)
 points(surv.fit.air.tp.40$time+0.2, surv.fit.air.tp.40$surv, type = 's', col = ColorAirTP[4], lwd = 2)
 
+axis(2, cex.axis=1.2, tick = FALSE)
 box()
+axis(1, cex.axis=1.2, tick = FALSE)
 
 ####Water Solitary Survival Split by Temp...####
 plot(0,type='n', #make empty plot 
@@ -237,7 +239,7 @@ plot(0,type='n', #make empty plot
      , ylim=c(0,1) # y limits 
      , xlab= 'Time (days)', # name x azis
      ylab = 'Survival Function', # name y axis
-     main = 'Air Solitary Survival', # main title (on middle of plot)
+     main = 'Water Solitary Survival', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.5) # make empty plot to fill in 
 
@@ -246,6 +248,9 @@ points(surv.fit.water.sol.32$time, surv.fit.water.sol.32$surv, type = 's', col =
 points(surv.fit.water.sol.36$time, surv.fit.water.sol.36$surv, type = 's', col = ColorWaterSol[3], lwd = 2)
 points(surv.fit.water.sol.40$time+0.2, surv.fit.water.sol.40$surv, type = 's', col = ColorWaterSol[4], lwd = 2)
 
+axis(2, cex.axis=1.2, tick = FALSE)
+box()
+axis(1, cex.axis=1.2, tick = FALSE)
 
 ####WAter TP Survival Split by Temp...####
 plot(0,type='n', #make empty plot 
@@ -253,7 +258,7 @@ plot(0,type='n', #make empty plot
      , ylim=c(0,1) # y limits 
      , xlab= 'Time (days)', # name x azis
      ylab = 'Survival Function', # name y axis
-     main = 'Air Solitary Survival', # main title (on middle of plot)
+     main = 'Water Tidepool Survival', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.5) # make empty plot to fill in 
 
@@ -262,8 +267,9 @@ points(surv.fit.water.tp.32$time, surv.fit.water.tp.32$surv, type = 's', col = C
 points(surv.fit.water.tp.36$time, surv.fit.water.tp.36$surv, type = 's', col = ColorWaterTP[3], lwd = 2)
 points(surv.fit.water.tp.40$time+0.2, surv.fit.water.tp.40$surv, type = 's', col = ColorWaterTP[4], lwd = 2)
 
+axis(2, cex.axis=1.2, tick = FALSE)
 box()
-
+axis(1, cex.axis=1.2, tick = FALSE)
 
 ###############
 #######
