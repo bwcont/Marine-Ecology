@@ -1,7 +1,6 @@
  #~R Code~#
  ##############################################################
--########### Title: LT50 and KM Figure Code
-+########### Title: LT50 Figure Code
+ ########### Title: LT50 Figure Code
  ########### By: L. Pandori & E. Cruz 
  ########### Based on: N. Silbinger and L. Miller    
  ########### Created: 3/12/18          
