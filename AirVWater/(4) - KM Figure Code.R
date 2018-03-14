@@ -47,7 +47,7 @@ surv.fit.water.clump <- survfit(foosurv ~ 1 #not sure why we do it as a function
 
 ####Clumped Water Survival...####
 foosurv <- Surv(
-   time = TIMESTART[LT50Data$air_water == "Air"], 
+  time = TIMESTART[LT50Data$air_water == "Air"], 
   time2 = TIMESURV[LT50Data$air_water == "Air"], 
   event = dead[LT50Data$air_water == "Air"]
 )
@@ -78,7 +78,7 @@ foosurv <- Surv(
   time = TIMESTART[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "40"],  
   time2 = TIMESURV[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "40"], 
   event = dead[LT50Data$air_water == "Air" & LT50Data$uhab == "Solitary" & LT50Data$tmt_temp == "40"]
-  )
+)
 surv.fit.air.sol.40 <- survfit(foosurv ~ 1)
 
 ####Air TP Survival Split by Temp...####
@@ -168,12 +168,12 @@ surv.fit.water.tp.40 <- survfit(foosurv ~ 1)
 
 ###Plot Color Set-Up...####
 #Get your color palettes
-ColorAirSol <- c('','','','')
-ColorAirSol <- c('','','','')
-ColorAirSol <- c('','','','')
-ColorAirSol <- c('','','','')
+ColorAirSol <- c('#F6C7C7','#FD94B4','#FF467E','#F12B6B')
+ColorAirTP <- c('#F6EFB4','#35C2BD','#2796CB','#3379E4')
+ColorWaterSol <- c('#F4EEC0','#AED09E','#61B292','#7E6752')
+ColorWaterTP <- c('#FFF5A5','#FFAA64','#FF8264','#FF6464')
 #Alternative color:
-wes.colors<-wes_palette('Cavalcanti', 4)
+wes.colors <- wes.palette('Cavalcanti', 4)
 
 ###Make Plot General/Example...####
 plot(0,type='n', #make empty plot 
@@ -200,10 +200,10 @@ box()
 
 
 ######
-
-
-
-
+####Air Solitary Survival Split by Temp...####
+####Air TP Survival Split by Temp...####
+####Water Solitary Survival Split by Temp...####
+####WAter TP Survival Split by Temp...####
 
 
 
