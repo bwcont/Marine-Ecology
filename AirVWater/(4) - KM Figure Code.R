@@ -165,10 +165,10 @@ surv.fit.water.tp.40 <- survfit(foosurv ~ 1)
 
 ###Plot Color Set-Up...####
 #Get your color palettes
-ColorAirSol <- c('#F6C7C7','#FD94B4','#FF467E','#F12B6B')
-ColorAirTP <- c('#F6EFB4','#35C2BD','#2796CB','#3379E4')
-ColorWaterSol <- c('#F4EEC0','#AED09E','#61B292','#7E6752')
-ColorWaterTP <- c('#FFF5A5','#FFAA64','#FF8264','#FF6464')
+ColorAirSol <- c('#80ff80','#00e600','#00b300','#008000') #Green levels (75,45,35,25)
+ColorAirTP <- c('#f7b6a1','#ee5b2b','#bd3b0f','#76250a')  #Red-Orange
+ColorWaterSol <- c('#e8f3fd','#72b9f3','#158aea','#0e61a4') #Blue
+ColorWaterTP <- c('#ffe6ff','#ff80ff','#ff00ff','#800080')  #Purple
 #Alternative color:
 wes.colors <- wes.palette('Cavalcanti', 4)
 BlueColorGradient <- c('#D9FAFF','#00BBF0','#005792','#00204A') #Light to Dark
@@ -279,27 +279,6 @@ axis(1, cex.axis=1.2, tick = FALSE)
 ###
 ##
 #
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
