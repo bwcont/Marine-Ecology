@@ -248,17 +248,6 @@ points(surv.fit.water.sol.40$time+0.2, surv.fit.water.sol.40$surv, type = 's', c
 
 
 ####WAter TP Survival Split by Temp...####
-
-
-
-###############
-#######
-######
-#####
-####
-###
-##
-#
 plot(0,type='n', #make empty plot 
      xlim=c(0,21) # x limits
      , ylim=c(0,1) # y limits 
@@ -274,6 +263,17 @@ points(surv.fit.water.tp.36$time, surv.fit.water.tp.36$surv, type = 's', col = C
 points(surv.fit.water.tp.40$time+0.2, surv.fit.water.tp.40$surv, type = 's', col = ColorWaterTP[4], lwd = 2)
 
 box()
+
+
+###############
+#######
+######
+#####
+####
+###
+##
+#
+
 
 
 
