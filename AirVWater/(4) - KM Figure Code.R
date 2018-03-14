@@ -174,6 +174,7 @@ ColorWaterSol <- c('#F4EEC0','#AED09E','#61B292','#7E6752')
 ColorWaterTP <- c('#FFF5A5','#FFAA64','#FF8264','#FF6464')
 #Alternative color:
 wes.colors <- wes.palette('Cavalcanti', 4)
+BlueColorGradient <- c('#D9FAFF','#00BBF0','#005792','#00204A') #Light to Dark
 
 ###Make Plot General/Example...####
 plot(0,type='n', #make empty plot 
