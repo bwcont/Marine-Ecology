@@ -111,8 +111,16 @@ for(i in 1:48) {
 
 View(results)
 
+#Give Names to columns
 results[,1]<-c('ASBA', 'ASBB', 'ASBC', "ASDA", 'ASDB', 'ASDC', 'ASWA', 'ASWB', 'ASWC', 'ASTA', 'ASTB', 'ASTC', 'ATBA', 'ATBB', 'ATBC', 'ATDA', 'ATDB', 'ATDC', 'ATWA', 'ATWB', 'ATWC', 'ATTA', 'ATTB', 'ATTC', 'WSBA', 'WSBB', 'WSBC', 'WSDA', 'WSDB', 'WSDC', 'WSWA', 'WSWB', 'WSWC', 'WSTA', 'WSTB', 'WSTC', 'WTBA', 'WTBB', 'WTBC', 'WTDA', 'WTDB', 'WTDC', 'WTWA', 'WTWB', 'WTWC', 'WTTA', 'WTTB', 'WTTC')
-
 results[,5]<-c('ASB', 'ASB', 'ASB', "ASD", 'ASD', 'ASD', 'ASW', 'ASW', 'ASW', 'AST', 'AST', 'AST', 'ATB', 'ATB', 'ATB', 'ATD', 'ATD', 'ATD', 'ATW', 'ATW', 'ATW', 'ATT', 'ATT', 'ATT', 'WSB', 'WSB', 'WSB', 'WSD', 'WSD', 'WSD', 'WSW', 'WSW', 'WSW', 'WST', 'WST', 'WST', 'WTB', 'WTB', 'WTB', 'WTD', 'WTD', 'WTD', 'WTW', 'WTW', 'WTW', 'WTT', 'WTT', 'WTT')
-
 results[,6]<-c('Air Solitary', 'Air Solitary', 'Air Solitary', "Air Solitary", 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool')
+
+#GLM for our different factors affecting the LT50s
+
+AllFactorGLM <- glm(        )
+
+
+
+
+
