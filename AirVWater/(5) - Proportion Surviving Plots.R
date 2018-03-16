@@ -77,6 +77,8 @@ plot(0,type='n', #make empty plot
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.5) # make empty plot to fill in 
 
+##################Needs to make the begining time point where we have 100% survival
+
 points(c(0,summary2$time[1:4]), c(1,summary2$prop.surv[1:4]), type = 's', col = BlueColorGradient[1], lwd = 2))
 points(summary2$time[5:8], summary2$prop.surv[5:8], type = 's', col = BlueColorGradient[2], lwd = 2)
 points(summary2$time[9:12], summary2$prop.surv[9:12]+0.1, type = 's', col = BlueColorGradient[3], lwd = 2)
