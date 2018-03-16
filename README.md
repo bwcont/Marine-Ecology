@@ -1,6 +1,6 @@
-Marine-Ecology
+Marine-Ecology 
 =====
-Code for Sorte Lab - BIOSCI199
+Code for Sorte Lab - BIOSCI 199 Research :ocean:
 
 
 **CONTENTS**<br/>

@@ -122,8 +122,13 @@ summary(AllFactorGLM)
 
 ###GLM for our different factors affecting the LT50s...####
 
-AllLT50GLM <- lm(results$LT50 ~ results$clump.name)
+AllLT50GLM <- glm(results$LT50 ~ results$clump.name)
 summary(AllLT50GLM)
+
+###Mann-Witney-Wilcox tests Submerge and uHab...####
+
+wilcox.test(LT50Data$alive[LT50Data$air_water == 'Air'], LT50Data$alive[LT50Data$air_water == 'Water'])
+wilcox.test(LT50Data$alive[LT50Data$uhab == 'TP'], LT50Data$alive[LT50Data$uhab == 'Solitary'])
 
 #############
 ######
