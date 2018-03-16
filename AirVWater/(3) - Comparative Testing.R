@@ -4,7 +4,7 @@
 ########### By: L. Pandori & E. Cruz 
 ########### Based on: N. Silbinger and L. Miller    
 ########### Created: 3/12/18          
-########### Edited: 3/16/18          
+########### Edited: 3/12/18          
 ##############################################################
 
 ###Setup..####
@@ -117,9 +117,17 @@ results[,6]<-c('Air Solitary', 'Air Solitary', 'Air Solitary', "Air Solitary", '
 
 ###GLM for our different factors affecting the LT50s...####
 
-AllFactorGLM <- glm(alive ~ tmt_temp + air.water + uhabita)
+AllFactorGLM <- glm(alive ~ tmt_temp + air_water + LT50Data$uhab + LT50Data$recovery)
 summary(AllFactorGLM)
 
 
+
+#############
+######
+#####
+####
+###
+##
+#
 
 
