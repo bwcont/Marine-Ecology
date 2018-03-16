@@ -91,9 +91,9 @@ small<-list(ASBA, ASBB, ASBC, ASDA, ASDB, ASDC, ASWA, ASWB, ASWC, ASTA, ASTB, AS
 unique(small)
 
 # make results matrix
-results<-matrix(nrow = 48, ncol = 6)
+results<-matrix(nrow = 48, ncol = 8)
 results<-as.data.frame(results)
-colnames(results)<-c('name', 'LT50', 'se', 'n', 'gen.name', 'clump.name' )
+colnames(results)<-c('name', 'LT50', 'se', 'n', 'gen.name', 'clump.name', 'uhab', 'air.water', 'recov' )
 rownames(results)<-c(1:48)
 results
 
@@ -106,8 +106,8 @@ for(i in 1:48) {
   results[i,2] <- dose.p(temp.model)
   se<-attr(dose.p(temp.model), 'SE')
   results[i,3]<-matrix(se)
-  results[i,4]<-length(temp$dead)     }   
-  
+  results[i,4]<-length(temp$dead) }   
+
 View(results)
 
 #Give Names to columns
@@ -115,11 +115,22 @@ results[,1]<-c('ASBA', 'ASBB', 'ASBC', "ASDA", 'ASDB', 'ASDC', 'ASWA', 'ASWB', '
 results[,5]<-c('ASB', 'ASB', 'ASB', "ASD", 'ASD', 'ASD', 'ASW', 'ASW', 'ASW', 'AST', 'AST', 'AST', 'ATB', 'ATB', 'ATB', 'ATD', 'ATD', 'ATD', 'ATW', 'ATW', 'ATW', 'ATT', 'ATT', 'ATT', 'WSB', 'WSB', 'WSB', 'WSD', 'WSD', 'WSD', 'WSW', 'WSW', 'WSW', 'WST', 'WST', 'WST', 'WTB', 'WTB', 'WTB', 'WTD', 'WTD', 'WTD', 'WTW', 'WTW', 'WTW', 'WTT', 'WTT', 'WTT')
 results[,6]<-c('Air Solitary', 'Air Solitary', 'Air Solitary', "Air Solitary", 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Solitary', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Air Tidepool', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Solitary', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool', 'Water Tidepool')
 
-###GLM for our different factors affecting the LT50s...####
+###GLM for our different factors affecting the survival...####
 
-AllFactorGLM <- glm(alive ~ tmt_temp + air.water + uhabita)
+AllFactorGLM <- glm(alive ~ tmt_temp + air_water + LT50Data$uhab + LT50Data$recovery)
 summary(AllFactorGLM)
 
+###GLM for our different factors affecting the LT50s...####
 
+AllLT50GLM <- lm(results$LT50 ~ results$clump.name)
+summary(AllLT50GLM)
+
+#############
+######
+#####
+####
+###
+##
+#
 
 
