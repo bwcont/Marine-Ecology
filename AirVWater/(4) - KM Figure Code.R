@@ -172,6 +172,7 @@ ColorWaterTP <- c('#ffe6ff','#ff80ff','#ff00ff','#800080')  #Purple
 #Alternative color:
 wes.colors <- wes.palette('Cavalcanti', 4)
 BlueColorGradient <- c('#D9FAFF','#00BBF0','#005792','#00204A') #Light to Dark
+TubeTapeColors <- c('#0ce2f3', '#00ff00', '#e6e600', '#ff8000' ) #blue, green, yellow, orange
 
 ###Make Plot General/Example...####
 plot(0,type='n', #make empty plot 
