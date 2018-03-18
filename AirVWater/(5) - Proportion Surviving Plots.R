@@ -13,11 +13,12 @@ rm(list=ls())
 
 #load all packages
 library(plyr)
-library(dplyr)
+library(ddplyr)
 library(KMsurv)
 library(survival)
 library(OIsurv)
 library(wesanderson)
+
 
 #Pull in data
 LT50Data <- read.csv("DataExtrapolate.csv")
@@ -80,9 +81,6 @@ AirSol32 <- points(summary2$time[6:10]+0.2, summary2$prop.surv[6:10], type = 's'
 AirSol36 <- points(summary2$time[11:15], summary2$prop.surv[11:15]+0.01, type = 's', col = ColorAirSol[3], lwd = 3)
 AirSol40 <- points(summary2$time[16:20]+0.2, summary2$prop.surv[16:20], type = 's', col = ColorAirSol[4], lwd = 3)
 
-#
-##Incomplete from here on down
-#
 AirTP18 <- points(summary2$time[21:25], summary2$prop.surv[21:25]+0.01, type = 's', col = ColorAirTP[1], lwd = 3)
 AirTP32 <- points(summary2$time[26:30]+0.2, summary2$prop.surv[26:30], type = 's', col = ColorAirTP[2], lwd = 3)
 AirTP36 <- points(summary2$time[31:35], summary2$prop.surv[31:35]+0.01, type = 's', col = ColorAirTP[3], lwd = 3)
