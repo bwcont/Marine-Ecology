@@ -30,31 +30,21 @@ LT50Data$TIMESTART <- 0.001
 #Note: The  survival assessment times were converted to days
 head(LT50Data)
 tail(LT50Data)
-
 View(LT50Data)
 
 LT50Data$name2<-paste(LT50Data$recovery, LT50Data$air_water, LT50Data$uhab, LT50Data$tmt_temp)
-
 LT50Data$name2
 
-
 summary<-ddply(LT50Data, c("name2"), summarize,
-                    num.live = sum(alive), # this is saying to take the mean range and ignore missing data if there is any
-                    num.total = sum(!is.na(alive)))
+               num.live = sum(alive), # this is saying to take the mean range and ignore missing data if there is any
+               num.total = sum(!is.na(alive)))
 summary
 
 summary$prop.surv<-(summary$num.live/summary$num.total)
-
-summary
-
 write.csv(summary, 'summary.data.csv')
-
 summary2<-read.csv('summary.data2.csv')
 
-View(summary2)
-
 head(summary2)
-
 
 ###Plot Color Set-Up...####
 #Get your color palettes
@@ -64,7 +54,7 @@ ColorWaterSol <- c('#e8f3fd','#72b9f3','#158aea','#0e61a4') #Blue
 ColorWaterTP <- c('#ffe6ff','#ff80ff','#ff00ff','#800080')  #Purple
 #Alternative color:
 library(wesanderson)
-wes.colors <- wes.palette('Cavalcanti', 4)
+wes.colors <- wes_palette('Cavalcanti', 4)
 BlueColorGradient <- c('#D9FAFF','#00BBF0','#005792','#00204A') #Light to Dark
 
 ###Make Plot General/Example...####
@@ -77,13 +67,6 @@ plot(0,type='n', #make empty plot
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.5) # make empty plot to fill in 
 
-##################Needs to make the begining time point where we have 100% survival
-
-points(c(0,summary2$time[1:4]), c(1,summary2$prop.surv[1:4]), type = 's', col = BlueColorGradient[1], lwd = 2))
-points(summary2$time[5:8], summary2$prop.surv[5:8], type = 's', col = BlueColorGradient[2], lwd = 2)
-points(summary2$time[9:12], summary2$prop.surv[9:12]+0.1, type = 's', col = BlueColorGradient[3], lwd = 2)
-points(summary2$time[13:16]+0.2, summary2$prop.surv[13:16], type = 's', col = BlueColorGradient[4], lwd = 2)
-
 # x-axis labels
 axis(2, cex.axis=1.2, tick = FALSE)
 box()
@@ -91,6 +74,32 @@ box()
 axis(1, cex.axis=1.2, tick = FALSE)
 box()
 
+###Create unplotted Lines of surv...####
+
+AirSol18 <- points(summary2$time[1:5], summary2$prop.surv[1:5]+0.01, type = 's', col = ColorAirSol[1], lwd = 3)
+AirSol32 <- points(summary2$time[6:10]+0.2, summary2$prop.surv[6:10], type = 's', col = ColorAirSol[2], lwd = 3)
+AirSol36 <- points(summary2$time[11:15], summary2$prop.surv[11:15]+0.01, type = 's', col = ColorAirSol[3], lwd = 3)
+AirSol40 <- points(summary2$time[16:20]+0.2, summary2$prop.surv[16:20], type = 's', col = ColorAirSol[4], lwd = 3)
+
+#
+##Incomplete from here on down
+#
+AirTP18 <- points(summary2$time[21:25], summary2$prop.surv[21:25]+0.01, type = 's', col = ColorAirSol[1], lwd = 3)
+AirTP32 <- points(summary2$time[26:30]+0.2, summary2$prop.surv[26:30], type = 's', col = ColorAirSol[2], lwd = 3)
+AirTP36 <- points(summary2$time[31:35], summary2$prop.surv[31:35]+0.01, type = 's', col = ColorAirSol[3], lwd = 3)
+AirTP40 <- points(summary2$time[36:40]+0.2, summary2$prop.surv[36:40], type = 's', col = ColorAirSol[4], lwd = 3)
+
+WaterSol18 <- points(summary2$time[41:45], summary2$prop.surv[41:45]+0.01, type = 's', col = ColorAirSol[1], lwd = 3)
+WaterSol32 <- points(summary2$time[46:50]+0.2, summary2$prop.surv[46:50], type = 's', col = ColorAirSol[2], lwd = 3)
+WaterSol36 <- points(summary2$time[51:55], summary2$prop.surv[51:55]+0.01, type = 's', col = ColorAirSol[3], lwd = 3)
+WaterSol40 <- points(summary2$time[56:60]+0.2, summary2$prop.surv[56:60], type = 's', col = ColorAirSol[4], lwd = 3)
+
+WaterTP18 <- points(summary2$time[61:65], summary2$prop.surv[61:65]+0.01, type = 's', col = ColorAirSol[1], lwd = 3)
+WaterTP32 <- points(summary2$time[66:70]+0.2, summary2$prop.surv[66:70], type = 's', col = ColorAirSol[2], lwd = 3)
+WaterTP36 <- points(summary2$time[71:75], summary2$prop.surv[71:75]+0.01, type = 's', col = ColorAirSol[3], lwd = 3)
+WaterTP40 <- points(summary2$time[76:80]+0.2, summary2$prop.surv[76:80], type = 's', col = ColorAirSol[4], lwd = 3)
+
+#2####
 
 
 
