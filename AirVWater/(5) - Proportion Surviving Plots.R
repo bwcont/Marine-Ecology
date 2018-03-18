@@ -20,7 +20,6 @@ library(OIsurv)
 library(wesanderson)
 
 #Pull in data
-setwd("C://Users/Sorte/Desktop/AirVWater")
 LT50Data <- read.csv("DataExtrapolate.csv")
 attach(LT50Data)
 
@@ -84,20 +83,24 @@ AirSol40 <- points(summary2$time[16:20]+0.2, summary2$prop.surv[16:20], type = '
 #
 ##Incomplete from here on down
 #
-AirTP18 <- points(summary2$time[21:25], summary2$prop.surv[21:25]+0.01, type = 's', col = ColorAirSol[1], lwd = 3)
-AirTP32 <- points(summary2$time[26:30]+0.2, summary2$prop.surv[26:30], type = 's', col = ColorAirSol[2], lwd = 3)
-AirTP36 <- points(summary2$time[31:35], summary2$prop.surv[31:35]+0.01, type = 's', col = ColorAirSol[3], lwd = 3)
-AirTP40 <- points(summary2$time[36:40]+0.2, summary2$prop.surv[36:40], type = 's', col = ColorAirSol[4], lwd = 3)
+AirTP18 <- points(summary2$time[21:25], summary2$prop.surv[21:25]+0.01, type = 's', col = ColorAirTP[1], lwd = 3)
+AirTP32 <- points(summary2$time[26:30]+0.2, summary2$prop.surv[26:30], type = 's', col = ColorAirTP[2], lwd = 3)
+AirTP36 <- points(summary2$time[31:35], summary2$prop.surv[31:35]+0.01, type = 's', col = ColorAirTP[3], lwd = 3)
+AirTP40 <- points(summary2$time[36:40]+0.2, summary2$prop.surv[36:40], type = 's', col = ColorAirTP[4], lwd = 3)
 
-WaterSol18 <- points(summary2$time[41:45], summary2$prop.surv[41:45]+0.01, type = 's', col = ColorAirSol[1], lwd = 3)
-WaterSol32 <- points(summary2$time[46:50]+0.2, summary2$prop.surv[46:50], type = 's', col = ColorAirSol[2], lwd = 3)
-WaterSol36 <- points(summary2$time[51:55], summary2$prop.surv[51:55]+0.01, type = 's', col = ColorAirSol[3], lwd = 3)
-WaterSol40 <- points(summary2$time[56:60]+0.2, summary2$prop.surv[56:60], type = 's', col = ColorAirSol[4], lwd = 3)
+WaterSol18 <- points(summary2$time[41:45], summary2$prop.surv[41:45]+0.01, type = 's', col = ColorWaterSol[1], lwd = 3)
+WaterSol32 <- points(summary2$time[46:50]+0.2, summary2$prop.surv[46:50], type = 's', col = ColorWaterSol[2], lwd = 3)
+WaterSol36 <- points(summary2$time[51:55], summary2$prop.surv[51:55]+0.01, type = 's', col = ColorWaterSol[3], lwd = 3)
+WaterSol40 <- points(summary2$time[56:60]+0.2, summary2$prop.surv[56:60], type = 's', col = ColorWaterSol[4], lwd = 3)
 
-WaterTP18 <- points(summary2$time[61:65], summary2$prop.surv[61:65]+0.01, type = 's', col = ColorAirSol[1], lwd = 3)
-WaterTP32 <- points(summary2$time[66:70]+0.2, summary2$prop.surv[66:70], type = 's', col = ColorAirSol[2], lwd = 3)
-WaterTP36 <- points(summary2$time[71:75], summary2$prop.surv[71:75]+0.01, type = 's', col = ColorAirSol[3], lwd = 3)
-WaterTP40 <- points(summary2$time[76:80]+0.2, summary2$prop.surv[76:80], type = 's', col = ColorAirSol[4], lwd = 3)
+WaterTP18 <- points(summary2$time[61:65], summary2$prop.surv[61:65]+0.01, type = 's', col = ColorWaterTP[1], lwd = 3)
+
+#check
+WaterTP32 <- points(summary2$time[66:70]+0.2, summary2$prop.surv[66:70], type = 's', col = ColorWaterTP[2], lwd = 3)
+#
+
+WaterTP36 <- points(summary2$time[71:75], summary2$prop.surv[71:75]+0.01, type = 's', col = ColorWaterTP[3], lwd = 3)
+WaterTP40 <- points(summary2$time[76:80]+0.2, summary2$prop.surv[76:80], type = 's', col = ColorWaterTP[4], lwd = 3)
 
 #2####
 
