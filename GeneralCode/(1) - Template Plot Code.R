@@ -22,3 +22,14 @@ points(c(1,2,3,4), data.summary2$mean.lt50, cex = 2, pch = 16, col = 'black')
 axis(2, cex.axis=1.2, tick = FALSE)
 box()
 
+###Plot Color Set-Up...####
+#Get your color palettes
+ColorAirSol <- c('#80ff80','#00e600','#00b300','#008000') #Green levels (75,45,35,25)
+ColorAirTP <- c('#f7b6a1','#ee5b2b','#bd3b0f','#76250a')  #Red-Orange
+ColorWaterSol <- c('#e8f3fd','#72b9f3','#158aea','#0e61a4') #Blue
+ColorWaterTP <- c('#ffe6ff','#ff80ff','#ff00ff','#800080')  #Purple
+#Alternative color:
+library(wesanderson)
+wes.colors <- wes_palette('Cavalcanti', 4)
+BlueColorGradient <- c('#D9FAFF','#00BBF0','#005792','#00204A') #Light to Dark
+TubeTapeColors <- c('#0ce2f3', '#00ff00', '#e6e600', '#ff8000' ) #blue, green, yellow, orange
