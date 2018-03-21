@@ -65,7 +65,7 @@ plot(0,type='n', #make empty plot
      , ylim=c(0,1) # y limits 
      , xlab= 'Time (days)', # name x azis
      ylab = 'Proportion Survival', # name y axis
-     main = 'Solitary Air Survival', # main title (on middle of plot)
+     main = '32°C Survival Over Time', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.5) # make empty plot to fill in 
 
@@ -79,7 +79,7 @@ box()
 ###Create unplotted Lines of surv...####
 
 AirSol18 <- points(summary2$time[1:5], summary2$prop.surv[1:5]+0.01, type = 's', col = ColorAirSol[1], lwd = 3)
-AirSol32 <- points(summary2$time[6:10]+0.2, summary2$prop.surv[6:10], type = 's', col = ColorAirSol[2], lwd = 3)
+AirSol32 <- points(summary2$time[6:10], summary2$prop.surv[6:10], type = 's', col = ColorAirSol[2], lwd = 3)
 AirSol36 <- points(summary2$time[11:15], summary2$prop.surv[11:15]+0.01, type = 's', col = ColorAirSol[3], lwd = 3)
 AirSol40 <- points(summary2$time[16:20]+0.2, summary2$prop.surv[16:20], type = 's', col = ColorAirSol[4], lwd = 3)
 
@@ -96,7 +96,7 @@ WaterSol40 <- points(summary2$time[56:60]+0.2, summary2$prop.surv[56:60], type =
 WaterTP18 <- points(summary2$time[61:65], summary2$prop.surv[61:65]+0.01, type = 's', col = ColorWaterTP[1], lwd = 3)
 
 #check
-WaterTP32 <- points(summary2$time[66:70]+0.2, summary2$prop.surv[66:70], type = 's', col = ColorWaterTP[2], lwd = 3)
+WaterTP32 <- points(summary2$time[66:70], summary2$prop.surv[66:70], type = 's', col = ColorWaterTP[2], lwd = 3)
 #
 
 WaterTP36 <- points(summary2$time[71:75], summary2$prop.surv[71:75]+0.01, type = 's', col = ColorWaterTP[3], lwd = 3)
@@ -104,6 +104,10 @@ WaterTP40 <- points(summary2$time[76:80]+0.2, summary2$prop.surv[76:80], type = 
 
 #2####
 
+AirTP32 <- points(summary2$time[26:30]+0.2, summary2$prop.surv[26:30], type = 's', col = ColorAirTP[2], lwd = 3)
+WaterTP32 <- points(summary2$time[66:70], summary2$prop.surv[66:70]+0.01, type = 's', col = ColorWaterTP[2], lwd = 3)
+WaterSol32 <- points(summary2$time[46:50]+0.2, summary2$prop.surv[46:50], type = 's', col = ColorWaterSol[2], lwd = 3)
+AirSol32 <- points(summary2$time[6:10], summary2$prop.surv[6:10], type = 's', col = ColorAirSol[2], lwd = 3)
 
 
 
