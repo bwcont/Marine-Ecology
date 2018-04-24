@@ -14,7 +14,9 @@ install.packages("popbio")
 # load required packages
 library(popbio)
 # give stages from Carson et al. 2011
-stages<-c('j', 'a1', 'a2')
+stages<-c('J', 'A1', 'A2')
+#Visualize the growth parameters
+parameterimage <- image2(A, round = 4)
 
 #Function for A1 -> J
 #To
