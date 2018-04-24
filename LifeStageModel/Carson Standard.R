@@ -7,9 +7,6 @@
 #################################################
 # clear workspace
 rm(lists=ls())
-
-# reminder to set working directory if not in project
-
 # load required packages
 library(popbio)
 # give stages from Carson et al. 2011
