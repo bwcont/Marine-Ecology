@@ -16,19 +16,31 @@ library(popbio)
 # give stages from Carson et al. 2011
 stages<-c('j', 'a1', 'a2')
 
+#Function for A1 -> J
+#To
+temp <- c(18,20,25,30)
+A1_J -> sample(x, #x is our function
+              replace = TRUE
+              )
+
 # give spring northern M cali population matrix from Carson et al. 2011
 A<-matrix(c(0.0074, 14.33, 22.13, 0.0216, 0.1659, 0, 0, 0.1487, 0.1877), nrow = 3, byrow = TRUE, dimnames = list(stages,stages))
+#Change A1 -> J. Currently at 14.330.
+
+
 A
 
 # create original population size vector using population data from ccsp spring survey from OCEANS (mid tide height only)
 n<-c(3824,3877,2299)
 
 # create population projection matrix
-  # parts: 
-      # A = lefkovitch matrix
-      # n = original pop matrix
-      # X = number of timesteps
+# parts: 
+# A = lefkovitch matrix
+# n = original pop matrix
+# X = number of timesteps
 p<-pop.projection(A,n,50)
+
+# look at summary 
 
 # can find lambda
 p$lambda
