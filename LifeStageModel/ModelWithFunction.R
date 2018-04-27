@@ -33,6 +33,9 @@ parameterimage <- image2(A, round = 4)
 # create original population size vector using population data from ccsp spring survey from OCEANS (mid tide height only)
 n<-c(3824,3877,2299)
 
+#Visualize the elasticity of the parameters
+image2(elasticity(A))
+
 # create population projection matrix
 # parts: 
 # A = lefkovitch matrix
