@@ -32,7 +32,7 @@ A<-matrix(c(0.0074, 14.33, 22.13, 0.0216, 0.1659, 0, 0, 0.1487, 0.1877), nrow = 
 
 A
 
-# create original population size vector using population data from ccsp spring survey from OCEANS (mid tide height only)
+# create original population size vector using population data from ccsp spring survey (2017?) from OCEANS (mid tide height only)
 n<-c(3824,3877,2299)
 
 # create population projection matrix
