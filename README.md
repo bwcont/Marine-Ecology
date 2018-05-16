@@ -20,7 +20,6 @@ summary.csv<br/>
 summary2.csv<br/>
 
 Folder: **LifeStageModel** </br>
-
 (1) - Carson Standard.R </br>
 (2) - ModelWithFunciton.R </br>
 
