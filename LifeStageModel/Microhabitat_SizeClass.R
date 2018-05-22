@@ -14,10 +14,11 @@ data <- read.csv("Model_Format_Summary.csv")
 attach(data)
 
 #TH Graph
+#Means
 lowmean <- mean(data$TotalMussels[data$TideH == "L"], na.rm = TRUE)
 midmean <- mean(data$TotalMussels[data$TideH == "M"], na.rm = TRUE)
 highmean <- mean(data$TotalMussels[data$TideH == "H"], na.rm = TRUE)
-
+#Standard Deviation
 midsd <- sd(data$TotalMussels[data$TideH == "M"], na.rm = TRUE)
 highsd <- sd(data$TotalMussels[data$TideH == "H"], na.rm = TRUE)
 lowsd <- sd(data$TotalMussels[data$TideH == "L"], na.rm = TRUE)
