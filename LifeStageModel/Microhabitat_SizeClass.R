@@ -32,10 +32,12 @@ plot(0,type='n', #make empty plot
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.05) # make empty plot to fill in
 
-arrows(c(1,2,3), c(4.9 + 10.78,7.5 + 18.58,0.9 + 2.102), 
-       c(1,2,3), c(4.9 - 10.78,7.5 - 18.58,0.9 - 2.102),
+arrows(c(1,2,3), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102), 
+       c(1,2,3), c(4.9 - 10.78, 7.5 - 18.58, 0.9 - 2.102),
       angle = 90, code = 3, length = 0, lty = 1, lwd = 5, # jelly bean width
-       col = palette(rainbow(3, s = 0.9, v = 1)))
+       col = c("blue", "darkviolet", "red"))
+
+points(x = c(1,2,3), y = c(4.9, 7.5, 0.91), cex = 1.5, pch = 16 )
 
 axis(1, c(1,2,3), c("Low", "Mid", "High"), cex=2, pch=16, col = "black")
 axis(2)
