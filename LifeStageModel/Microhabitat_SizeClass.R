@@ -13,6 +13,10 @@ setwd()
 data <- read.csv("Model_Format_Summary_Temp.csv")
 attach(data)
 
+data$TideHeight2 <- revalue(data$TideHeight2,
+               c("L"="1", "M"="2", "H"="3"))
+
+data$TideHeight2 <- as.numeric(TideHeight2)
 #TH Graph
 #Means
 lowmean <- mean(data$TotalMussels[data$TideH == "L"], na.rm = TRUE)
