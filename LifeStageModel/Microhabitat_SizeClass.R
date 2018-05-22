@@ -6,11 +6,11 @@
 # Last Edited : 5/21/2018
 #################################################
 # clear workspace
-rm(lists=ls())
+rm(list=ls())
 # Set WD
 setwd()
 #Set DAta
-data <- read.csv("Model_Format_Summary.csv")
+data <- read.csv("Model_Format_Summary_Temp.csv")
 attach(data)
 
 #TH Graph
@@ -26,7 +26,7 @@ lowsd <- sd(data$TotalMussels[data$TideH == "L"], na.rm = TRUE)
 #Model for Total Mussels
 #Note: the subset designated within the brackets is due to the data only being inputted for 2 sites thus far.
 
-TotalMussModel <- lm(TotalMussels[1:405] ~ SizeClass[1:405] + Shelter[1:405] + Microhabitat[1:405] + TideH[1:405] + Site[1:405])
+TotalMussModel <- glm(TotalMussels ~ Shelter + Microhabitat + TideH + Site +SizeClass)
 summary(TotalMussModel)
 
 #Model for Density
