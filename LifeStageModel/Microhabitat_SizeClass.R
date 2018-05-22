@@ -17,6 +17,9 @@ data$TideHeight2 <- revalue(data$TideHeight2,
                c("L"="1", "M"="2", "H"="3"))
 
 data$TideHeight2 <- as.numeric(TideHeight2)
+#convert our site and TH into a numeric discrete
+data$Site2 <- as.numeric(data$Site)
+
 #TH Graph
 #Means
 lowmean <- mean(data$TotalMussels[data$TideH == "L"], na.rm = TRUE)
@@ -50,9 +53,9 @@ box()
 
 #Model for Total Mussels
 #Note: the subset designated within the brackets is due to the data only being inputted for 2 sites thus far.
-
-TotalMussModel <- glm(TotalMussels ~ Shelter + Microhabitat + TideH + Site +SizeClass)
-summary(TotalMussModel)
+#Shelter and Microhabitat
+TotalMussModel2<-glm(TotalMussels ~ Microhabitat + TideHeight2 + Site +SizeClass, data = data)
+summary(TotalMussModel2) 
 
 #Model for Density
 
