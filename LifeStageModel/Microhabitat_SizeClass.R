@@ -1,9 +1,9 @@
 ################################################# 
 # Title: Microhabitat & Size Class for M. californianus
 # Purpose: Survey Model comparison
-# Created by : E. Cruz
+# Created by : E. Cruz & L. Pandori
 # Created on : 5/21/2018
-# Last Edited : 5/21/2018
+# Last Edited : 5/22/2018
 #################################################
 # clear workspace
 rm(list=ls())
