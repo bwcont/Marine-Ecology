@@ -10,7 +10,7 @@ rm(list=ls())
 # Set WD
 setwd()
 #Set DAta
-data.muss <- read.csv("Model_Format_Summary_Temp.csv")
+data.muss <- read.csv("Model_Format_Summary.csv")
 attach(data.muss)
 
 data.muss$TideHeight2 <- revalue(data.muss$TideHeight2,
@@ -52,6 +52,7 @@ axis(2)
 box()
 
 #Model for Total Mussels
+
 #Note: the subset designated within the brackets is due to the data only being inputted for 2 sites thus far.
 #Shelter and Microhabitat
 TotalMussModel2<-glm(TotalMussels ~ Microhabitat + TideHeight2 + Site +SizeClass, data = data.muss)
