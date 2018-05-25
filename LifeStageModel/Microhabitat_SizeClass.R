@@ -10,25 +10,25 @@ rm(list=ls())
 # Set WD
 setwd()
 #Set DAta
-data <- read.csv("Model_Format_Summary_Temp.csv")
-attach(data)
+data.muss <- read.csv("Model_Format_Summary.csv")
+attach(data.muss)
 
-data$TideHeight2 <- revalue(data$TideHeight2,
+data.muss$TideHeight2 <- revalue(data.muss$TideHeight2,
                c("L"="1", "M"="2", "H"="3"))
 
-data$TideHeight2 <- as.numeric(TideHeight2)
+data.muss$TideHeight2 <- as.numeric(TideHeight2)
 #convert our site and TH into a numeric discrete
-data$Site2 <- as.numeric(data$Site)
+data.muss$Site2 <- as.numeric(data.muss$Site)
 
 #TH Graph
 #Means
-lowmean <- mean(data$TotalMussels[data$TideH == "L"], na.rm = TRUE)
-midmean <- mean(data$TotalMussels[data$TideH == "M"], na.rm = TRUE)
-highmean <- mean(data$TotalMussels[data$TideH == "H"], na.rm = TRUE)
+lowmean <- mean(data.muss$TotalMussels[data.muss$TideH == "L"], na.rm = TRUE)
+midmean <- mean(data.muss$TotalMussels[data.muss$TideH == "M"], na.rm = TRUE)
+highmean <- mean(data.muss$TotalMussels[data.muss$TideH == "H"], na.rm = TRUE)
 #Standard Deviation
-midsd <- sd(data$TotalMussels[data$TideH == "M"], na.rm = TRUE)
-highsd <- sd(data$TotalMussels[data$TideH == "H"], na.rm = TRUE)
-lowsd <- sd(data$TotalMussels[data$TideH == "L"], na.rm = TRUE)
+midsd <- sd(data.muss$TotalMussels[data.muss$TideH == "M"], na.rm = TRUE)
+highsd <- sd(data.muss$TotalMussels[data.muss$TideH == "H"], na.rm = TRUE)
+lowsd <- sd(data.muss$TotalMussels[data.muss$TideH == "L"], na.rm = TRUE)
 
 plot(0,type='n', #make empty plot 
      xlim=c(0.75,3.25) # x limits
@@ -52,9 +52,10 @@ axis(2)
 box()
 
 #Model for Total Mussels
+
 #Note: the subset designated within the brackets is due to the data only being inputted for 2 sites thus far.
 #Shelter and Microhabitat
-TotalMussModel2<-glm(TotalMussels ~ Microhabitat + TideHeight2 + Site +SizeClass, data = data)
+TotalMussModel2<-glm(TotalMussels ~ Microhabitat + TideHeight2 + Site +SizeClass, data = data.muss)
 summary(TotalMussModel2) 
 
 #Model for Density
