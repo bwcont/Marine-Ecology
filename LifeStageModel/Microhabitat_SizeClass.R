@@ -3,7 +3,7 @@
 # Purpose: Survey Model comparison
 # Created by : E. Cruz & L. Pandori
 # Created on : 5/21/2018
-# Last Edited : 5/22/2018
+# Last Edited : 6/1/2018
 #################################################
 # clear workspace
 rm(list=ls())
@@ -17,7 +17,8 @@ library(plyr)
 
 data.muss$TideHeightTwo <- NA
 data.muss$SiteTwo <- NA
-
+data.muss$MicroHabTwo <- NA
+data.muss$SeasonTwo <- NA
 
 data.muss$TideHeightTwo <- revalue(data.muss$TideHeight2,
                                  c("L"="1", "M"="2", "H"="3"))
