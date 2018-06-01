@@ -5,33 +5,33 @@
 # Created on : 5/21/2018
 # Last Edited : 6/1/2018
 #################################################
-# clear workspace
-rm(list=ls())
 # Set WD
 setwd()
+# clear workspace
+rm(list=ls())
+
 #Set DAta
 data.muss <- read.csv("Model_Format_Summary.csv")
-attach(data.muss)
 
 library(plyr)
 
-data.muss$TideHeightTwo <- NA
-data.muss$SiteTwo <- NA
-data.muss$MicroHabTwo <- NA
-data.muss$SeasonTwo <- NA
 
-data.muss$TideHeightTwo <- revalue(data.muss$TideHeight2,
-                                 c("L"="1", "M"="2", "H"="3"))
+data.muss$TideH <- revalue(data.muss$TideH, c("L"=1, "M"=2, "H"=3))
+data.muss$Site <- revalue(data.muss$Site, c("CCSP" = 1, "LCDM" = 2))
+data.muss$Microhabitat <- revalue(data.muss$Microhabitat, c("UnShelt_Solitary" = 1, "UnShelt_Aggregate" = 2, "Sheltered_Solitary" = 3, "Sheltered_Aggregate" = 4, "Tidepool" = 5))
+data.muss$Season <- revalue(data.muss$Season, c("Spring" = 1, "Fall" = 3, "Summer" = 2))
 
-#Model for Total Mussels
-
-#Note: the subset designated within the brackets is due to the data only being inputted for 2 sites thus far.
-#Shelter and Microhabitat
-TotalMussModel2<-glm(TotalMussels ~ Microhabitat + TideHeight2 + Site +SizeClass, data = data.muss)
-summary(TotalMussModel2) 
+as.factor(data.muss$Microhabitat)
+as.factor(data.muss$TideH)
+as.factor(data.muss$Season)
+as.factor(data.muss$Year)
+as.factor(data.muss$SizeClass)
+as.numeric(data.muss$Density)
 
 #Model for Density
+Density.Model <- glm(data.muss$Density ~ data.muss$TideH + data.muss$Site + data.muss$Microhabitat + data.muss$Season + data.muss$Year + data.muss$SizeClass)
 
+summary(Density.Model)
 
 #Model for Filling
 
