@@ -23,10 +23,23 @@ data.muss$SeasonTwo <- NA
 data.muss$TideHeightTwo <- revalue(data.muss$TideHeight2,
                                  c("L"="1", "M"="2", "H"="3"))
 
-data.muss$TideHeight2 <- as.numeric(TideHeight2)
-#convert our site and TH into a numeric discrete
-data.muss$Site2 <- as.numeric(data.muss$Site)
+#Model for Total Mussels
 
+#Note: the subset designated within the brackets is due to the data only being inputted for 2 sites thus far.
+#Shelter and Microhabitat
+TotalMussModel2<-glm(TotalMussels ~ Microhabitat + TideHeight2 + Site +SizeClass, data = data.muss)
+summary(TotalMussModel2) 
+
+#Model for Density
+
+
+#Model for Filling
+
+
+#Model for Association
+
+
+#####Graphs#####
 #TH Graph
 #Means
 
@@ -51,19 +64,3 @@ axis(1, c(1,2,3), c("Low", "Mid", "High"), cex=2, pch=16, col = "black")
 axis(2)
 
 box()
-
-#Model for Total Mussels
-
-#Note: the subset designated within the brackets is due to the data only being inputted for 2 sites thus far.
-#Shelter and Microhabitat
-TotalMussModel2<-glm(TotalMussels ~ Microhabitat + TideHeight2 + Site +SizeClass, data = data.muss)
-summary(TotalMussModel2) 
-
-#Model for Density
-
-
-#Model for Filling
-
-
-#Model for Association
-
