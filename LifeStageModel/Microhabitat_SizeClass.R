@@ -13,8 +13,14 @@ setwd()
 data.muss <- read.csv("Model_Format_Summary.csv")
 attach(data.muss)
 
-data.muss$TideHeight2 <- revalue(data.muss$TideHeight2,
-               c("L"="1", "M"="2", "H"="3"))
+library(plyr)
+
+data.muss$TideHeightTwo <- NA
+data.muss$SiteTwo <- NA
+
+
+data.muss$TideHeightTwo <- revalue(data.muss$TideHeight2,
+                                 c("L"="1", "M"="2", "H"="3"))
 
 data.muss$TideHeight2 <- as.numeric(TideHeight2)
 #convert our site and TH into a numeric discrete
@@ -22,13 +28,7 @@ data.muss$Site2 <- as.numeric(data.muss$Site)
 
 #TH Graph
 #Means
-lowmean <- mean(data.muss$TotalMussels[data.muss$TideH == "L"], na.rm = TRUE)
-midmean <- mean(data.muss$TotalMussels[data.muss$TideH == "M"], na.rm = TRUE)
-highmean <- mean(data.muss$TotalMussels[data.muss$TideH == "H"], na.rm = TRUE)
-#Standard Deviation
-midsd <- sd(data.muss$TotalMussels[data.muss$TideH == "M"], na.rm = TRUE)
-highsd <- sd(data.muss$TotalMussels[data.muss$TideH == "H"], na.rm = TRUE)
-lowsd <- sd(data.muss$TotalMussels[data.muss$TideH == "L"], na.rm = TRUE)
+
 
 plot(0,type='n', #make empty plot 
      xlim=c(0.75,3.25) # x limits
@@ -41,7 +41,7 @@ plot(0,type='n', #make empty plot
 
 arrows(c(1,2,3), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102), 
        c(1,2,3), c(4.9 - 10.78, 7.5 - 18.58, 0.9 - 2.102),
-      angle = 90, code = 3, length = 0, lty = 1, lwd = 5, # jelly bean width
+       angle = 90, code = 3, length = 0, lty = 1, lwd = 5, # jelly bean width
        col = c("blue", "darkviolet", "red"))
 
 points(x = c(1,2,3), y = c(4.9, 7.5, 0.91), cex = 1.5, pch = 16 )
