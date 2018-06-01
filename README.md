@@ -15,12 +15,13 @@ Code for Sorte Lab - BIOSCI 199 Research :ocean:
 (3) - Comparative Testing<br/>
 (4) - KM Figure Code.R<br/>
 (5) - Proportion Surviving Plots.R<br/>
-DataExtrapolate.csv
+DataExtrapolate.csv <br/>
 summary.csv<br/>
 summary2.csv<br/>
 
 &#x1F4D8; Folder: **LifeStageModel** </br>
 (1) - Carson Standard.R </br>
 (2) - ModelWithFunciton.R </br>
+(3) - Microhabitat_SizeClass.R
 
 
