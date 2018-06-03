@@ -1,5 +1,5 @@
 ################################################# 
-# Title: Microhabitat & Size Class for M. californianus
+# Title: Graphs for Microhabitat & Size Class for M. californianus
 # Purpose: Graphs for Microhabitat and Size Class Work
 # Created by : E. Cruz & L. Pandori
 # Created on : 5/21/2018
@@ -21,6 +21,7 @@ Col.MicroHab <- c('#FF0000','#FF8000', '#00CC00', '#66B2FF', '#B266FF')
 Col.TH <- c("blue", "darkviolet", "red")
 
 ###Fig1. TH Graph####
+#(Using Both Sites)#
 #Means
 lowmean <- mean(data.muss$TotalMussels[data.muss$TideH == "1"], na.rm = TRUE)
 midmean <- mean(data.muss$TotalMussels[data.muss$TideH == "2"], na.rm = TRUE)
@@ -30,7 +31,7 @@ highmean <- mean(data.muss$TotalMussels[data.muss$TideH == "3"], na.rm = TRUE)
   highsd <- sd(data.muss$TotalMussels[data.muss$TideH == "2"], na.rm = TRUE)
   lowsd <- sd(data.muss$TotalMussels[data.muss$TideH == "3"], na.rm = TRUE)
 
- plot(0,type='n', #make empty plot 
+plot(0,type='n', #make empty plot 
      xlim=c(0.5,3.5) # x limits
      , ylim=c(1, 27) # y limits 
      , xlab= 'Tide Height', # name x azis
@@ -83,6 +84,7 @@ box()
 
 
 ###Fig. 3-7: Size Class Distribution Association With Microhabitat####
+#(Using CCSP)#
 
 ##Unsheltered Solitary
 plot(0,type='n', #make empty plot 
@@ -238,6 +240,31 @@ axis(2)
 box()
 
 ####Fig. 8 Bar of Proportion (Using Totals for Size Classes)#########
+#(Using CCSP)#
+
+plot(0,type='n', #make empty plot 
+     xlim=c(0.75,9.25) # x limits
+     , ylim=c(0,100) # y limits 
+     , xlab= 'Age Class', # name x azis
+     ylab = 'Percent Total Mussels', # name y axis
+     main = ' ', # main title (on middle of plot)
+     pch=19, yaxt='n', axes=F, # removed axes
+     cex.lab=1.05) # make empty plot to fill in
+
+
+
+
+lines(c(1,2,3,4,5,6,7,8,9), c(1,2,3,4,5,6,7,8,9), type="h",lwd=55,lend="butt", col = Col.MicroHab)
+
+axis(1, c(0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5), c('0','10','20','30','40','50','60','70','80'), cex=2, pch=16, col = "black")
+axis(2)
+box()
+
+
+
+
+
+
 
 
 
