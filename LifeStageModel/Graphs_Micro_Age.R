@@ -22,17 +22,22 @@ Col.MicroHab <- c('#FF0000','#FF8000', '#00CC00', '#66B2FF', '#B266FF')
 
 #Fig1. TH Graph
 #Means
-lowmean <- mean(data.muss$TotalMussels[data.muss$TideH == "L"], na.rm = TRUE)
-midmean <- mean(data.muss$TotalMussels[data.muss$TideH == "M"], na.rm = TRUE)
-highmean <- mean(data.muss$TotalMussels[data.muss$TideH == "H"], na.rm = TRUE)
+lowmean <- mean(data.muss$TotalMussels[data.muss$TideH == "1"], na.rm = TRUE)
+midmean <- mean(data.muss$TotalMussels[data.muss$TideH == "2"], na.rm = TRUE)
+highmean <- mean(data.muss$TotalMussels[data.muss$TideH == "3"], na.rm = TRUE)
 #Standard Deviation
-  midsd <- sd(data.muss$TotalMussels[data.muss$TideH == "M"], na.rm = TRUE)
-  highsd <- sd(data.muss$TotalMussels[data.muss$TideH == "H"], na.rm = TRUE)
-  lowsd <- sd(data.muss$TotalMussels[data.muss$TideH == "L"], na.rm = TRUE)
+  midsd <- sd(data.muss$TotalMussels[data.muss$TideH == "1"], na.rm = TRUE)
+  highsd <- sd(data.muss$TotalMussels[data.muss$TideH == "2"], na.rm = TRUE)
+  lowsd <- sd(data.muss$TotalMussels[data.muss$TideH == "3"], na.rm = TRUE)
 
-    plot(0,type='n', #make empty plot 
-         xlim=c(0.75,3.25) # x limits
-         @@ -41,7 +41,7 @@ plot(0,type='n', #make empty plot
+ plot(0,type='n', #make empty plot 
+     xlim=c(0.75,11.25) # x limits
+     , ylim=c(-1.15,1) # y limits 
+     , xlab= ' ', # name x azis
+     ylab = 'Association', # name y axis
+     main = ' ', # main title (on middle of plot)
+     pch=19, yaxt='n', axes=F, # removed axes
+     cex.lab=1.05) # make empty plot to fill in
 arrows(c(1,2,3), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102),    
        c(1,2,3), c(4.9 - 10.78, 7.5 - 18.58, 0.9 - 2.102),
 angle = 90, code = 3, length = 0, lty = 1, lwd = 5, # jelly bean width
