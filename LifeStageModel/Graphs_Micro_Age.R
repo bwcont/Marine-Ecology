@@ -33,9 +33,29 @@ summary(Density.Model)
 #Model for Association
 
 #####Graphs#####
-
 #Colors
 Col.MicroHab <- c('#FF0000','#FF8000', '#00CC00', '#66B2FF', '#B266FF')
+
+
+#Fig1. TH Graph
+#Means
+lowmean <- mean(data.muss$TotalMussels[data.muss$TideH == "L"], na.rm = TRUE)
+midmean <- mean(data.muss$TotalMussels[data.muss$TideH == "M"], na.rm = TRUE)
+highmean <- mean(data.muss$TotalMussels[data.muss$TideH == "H"], na.rm = TRUE)
+#Standard Deviation
+  midsd <- sd(data.muss$TotalMussels[data.muss$TideH == "M"], na.rm = TRUE)
+  highsd <- sd(data.muss$TotalMussels[data.muss$TideH == "H"], na.rm = TRUE)
+  lowsd <- sd(data.muss$TotalMussels[data.muss$TideH == "L"], na.rm = TRUE)
+
+    plot(0,type='n', #make empty plot 
+         xlim=c(0.75,3.25) # x limits
+         @@ -41,7 +41,7 @@ plot(0,type='n', #make empty plot
+arrows(c(1,2,3), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102),    
+       c(1,2,3), c(4.9 - 10.78, 7.5 - 18.58, 0.9 - 2.102),
+angle = 90, code = 3, length = 0, lty = 1, lwd = 5, # jelly bean width
+col = c("blue", "darkviolet", "red"))
+points(x = c(1,2,3), y = c(4.9, 7.5, 0.91), cex = 1.5, pch = 16 )
+
 
 ###Fig. 2: Average Association of Micro per site####
 plot(0,type='n', #make empty plot 
