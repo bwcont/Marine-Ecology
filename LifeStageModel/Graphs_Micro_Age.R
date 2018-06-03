@@ -18,9 +18,9 @@ data.muss <- read.csv("Model_Format_Summary.csv")
 #####Graphs#####
 #Colors
 Col.MicroHab <- c('#FF0000','#FF8000', '#00CC00', '#66B2FF', '#B266FF')
+Col.TH <- c("blue", "darkviolet", "red")
 
-
-#Fig1. TH Graph
+###Fig1. TH Graph####
 #Means
 lowmean <- mean(data.muss$TotalMussels[data.muss$TideH == "1"], na.rm = TRUE)
 midmean <- mean(data.muss$TotalMussels[data.muss$TideH == "2"], na.rm = TRUE)
@@ -31,19 +31,23 @@ highmean <- mean(data.muss$TotalMussels[data.muss$TideH == "3"], na.rm = TRUE)
   lowsd <- sd(data.muss$TotalMussels[data.muss$TideH == "3"], na.rm = TRUE)
 
  plot(0,type='n', #make empty plot 
-     xlim=c(0.75,11.25) # x limits
-     , ylim=c(-1.15,1) # y limits 
+     xlim=c(0.5,3.5) # x limits
+     , ylim=c(0, 25) # y limits 
      , xlab= ' ', # name x azis
-     ylab = 'Association', # name y axis
+     ylab = 'Average Total Mussel', # name y axis
      main = ' ', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.05) # make empty plot to fill in
+
 arrows(c(1,2,3), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102),    
        c(1,2,3), c(4.9 - 10.78, 7.5 - 18.58, 0.9 - 2.102),
-angle = 90, code = 3, length = 0, lty = 1, lwd = 5, # jelly bean width
-col = c("blue", "darkviolet", "red"))
-points(x = c(1,2,3), y = c(4.9, 7.5, 0.91), cex = 1.5, pch = 16 )
+angle = 90, code = 3, length = 0, lty = 1, lwd = 12, # jelly bean width
+col = Col.TH)
 
+points(x = c(1,2,3), y = c(4.9, 7.5, 0.91), cex = 1.5, pch = 16 )
+axis(1, c(1,2,3), c('Low', 'Mid', 'High'), cex=2, pch=16, col = "black")
+axis(2)
+box()
 
 ###Fig. 2: Average Association of Micro per site####
 plot(0,type='n', #make empty plot 
