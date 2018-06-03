@@ -32,19 +32,21 @@ highmean <- mean(data.muss$TotalMussels[data.muss$TideH == "3"], na.rm = TRUE)
 
  plot(0,type='n', #make empty plot 
      xlim=c(0.5,3.5) # x limits
-     , ylim=c(0, 25) # y limits 
-     , xlab= ' ', # name x azis
+     , ylim=c(1, 27) # y limits 
+     , xlab= 'Tide Height', # name x azis
      ylab = 'Average Total Mussel', # name y axis
      main = ' ', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.05) # make empty plot to fill in
 
-arrows(c(1,2,3), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102),    
-       c(1,2,3), c(4.9 - 10.78, 7.5 - 18.58, 0.9 - 2.102),
-angle = 90, code = 3, length = 0, lty = 1, lwd = 12, # jelly bean width
-col = Col.TH)
+lines(c(1,2,3), c(4.9, 7.5, 0.91), type="h",lwd=50,lend="butt", col = Col.TH)
 
-points(x = c(1,2,3), y = c(4.9, 7.5, 0.91), cex = 1.5, pch = 16 )
+arrows(c(1,2,3), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102),    
+       c(1,2,3), c(0, 0, 0),
+angle = 90, code = 3, length = 0, lty = 1, lwd = 2, # jelly bean width
+col = 'black')
+
+points(x = c(1,2,3), y = c(4.9, 7.5, 0.91), cex = 1, pch = 16 )
 axis(1, c(1,2,3), c('Low', 'Mid', 'High'), cex=2, pch=16, col = "black")
 axis(2)
 box()
