@@ -55,6 +55,11 @@ points(x = c(1,2,3,4,5,7,8,9,10,11), y = c(-0.95, -0.67 , -0.90,-0.62,-0.87,-0.9
 axis(1, c(3, 9), c("LCDM", 'CCSP'), cex=2, pch=16, col = "black")
 axis(2)
 abline(h=0)
+legend("topright", legend=c('UnShelt_Solitary',
+                        'UnShelt_Aggregate',
+                        'Sheltered_Solitary',
+                        'Sheltered_Aggregate',
+                        'Tidepool'), fill = Col.MicroHab, cex=0.8)
 
 box()
 
