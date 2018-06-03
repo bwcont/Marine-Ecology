@@ -3,7 +3,7 @@
 # Purpose: Survey Model comparison
 # Created by : E. Cruz & L. Pandori
 # Created on : 5/21/2018
-# Last Edited : 6/1/2018
+# Last Edited : 6/3/2018
 #################################################
 # Set WD
 setwd()
@@ -45,17 +45,16 @@ plot(0,type='n', #make empty plot
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.05) # make empty plot to fill in
 
-arrows(c(1,2,3,4,5,7,8,9,10,11), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102), 
-       c(1,2,3,4,5,7,8,9,10,11), c(4.9 - 10.78, 7.5 - 18.58, 0.9 - 2.102),
+arrows(c(1,2,3,4,5,7,8,9,10,11), c(-0.95-0.08, -0.67-0.53 , -0.90-0.21, -0.62-0.43, -0.87-0.18, -0.97-0.07, -0.73-0.28, -0.92-0.19, -0.72-0.32 ,-0.76-0.38), 
+       c(1,2,3,4,5,7,8,9,10,11), c(-0.95+0.08, -0.67+0.53 , -0.90+0.21, -0.62+0.43, -0.87+0.18, -0.97+0.07, -0.73+0.28, -0.92+0.19, -0.72+0.32 ,-0.76+0.38),
        angle = 90, code = 3, length = 0, lty = 1, lwd = 5, # jelly bean width
        col = Col.MicroHab)
 
 points(x = c(1,2,3,4,5,7,8,9,10,11), y = c(-0.95, -0.67 , -0.90,-0.62,-0.87,-0.97,-0.73,-0.92,-0.72 ,-0.76), cex = 1.5, pch = 16 )
 
-axis(1, c(3, 8), c("LCDM", 'CCSP'), cex=2, pch=16, col = "black")
+axis(1, c(3, 9), c("LCDM", 'CCSP'), cex=2, pch=16, col = "black")
 axis(2)
-
-box()
+abline(h=0)
 
 
 
