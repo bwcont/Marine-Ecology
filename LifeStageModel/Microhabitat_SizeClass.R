@@ -70,7 +70,7 @@ box()
 
 ###Fig. 3-7: Size Class Distribution Association With Microhabitat####
 
-#Unsheltered Solitary
+##Unsheltered Solitary
 plot(0,type='n', #make empty plot 
      xlim=c(0.75,9.25) # x limits
      , ylim=c(-1,1) # y limits 
@@ -94,7 +94,7 @@ axis(1, c(0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5), c('0','10','20','30','40','50','
 axis(2)
 box()
 
-#Unsheltered Aggregate
+##Unsheltered Aggregate
 plot(0,type='n', #make empty plot 
      xlim=c(0.75,9.25) # x limits
      , ylim=c(-1,1) # y limits 
@@ -118,7 +118,7 @@ axis(1, c(0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5), c('0','10','20','30','40','50','
 axis(2)
 box()
 
-#Sheltered Solitary
+##Sheltered Solitary
 plot(0,type='n', #make empty plot 
      xlim=c(0.75,9.25) # x limits
      , ylim=c(-1,1) # y limits 
@@ -151,7 +151,7 @@ axis(1, c(0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5), c('0','10','20','30','40','50','
 axis(2)
 box()
 
-#Sheltered Aggregate
+##Sheltered Aggregate
 plot(0,type='n', #make empty plot 
      xlim=c(0.75,9.25) # x limits
      , ylim=c(-1,1) # y limits 
@@ -199,3 +199,26 @@ axis(1, c(0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5), c('0','10','20','30','40','50','
 axis(2)
 box()
 
+##Tidepool
+plot(0,type='n', #make empty plot 
+     xlim=c(0.75,9.25) # x limits
+     , ylim=c(-1,1) # y limits 
+     , xlab= 'Age Class', # name x azis
+     ylab = 'Association', # name y axis
+     main = 'Tidepool', # main title (on middle of plot)
+     pch=19, yaxt='n', axes=F, # removed axes
+     cex.lab=1.05) # make empty plot to fill in
+
+arrows(c(1,2,3,4,5,6,7,8,9), c(-0.748-0.437, -0.740-0.276, -0.672-0.493, -0.510-0.464,-0.658-0.593, -0.693-0.532, -1.000,-1.000,-0.945-0.095), 
+       c(1,2,3,4,5,6,7,8,9), c(-0.748+0.437, -0.740+0.276, -0.672+0.493, -0.510+0.464,-0.658+0.593, -0.693+0.532, -1.000,-1.000,-0.945+0.095),
+       angle = 90, code = 3, length = 0, lty = 1, lwd = 13, # jelly bean width
+       #Change to single color
+       col = "#B266FF")
+
+points(x = c(1,2,3,4,5,6,7,8,9), y = c(-0.748,-0.740,-0.672,-0.510,-0.658,-0.693,-1.000,-1.000,-0.945)
+       , cex = 1.4, pch = 16 )
+
+abline(h=0)
+axis(1, c(0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5), c('0','10','20','30','40','50','60','70','80'), cex=2, pch=16, col = "black")
+axis(2)
+box()
