@@ -39,7 +39,7 @@ highmean <- mean(data.muss$TotalMussels[data.muss$TideH == "3"], na.rm = TRUE)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.05) # make empty plot to fill in
 
-lines(c(1,2,3), c(4.9, 7.5, 0.91), type="h",lwd=50,lend="butt", col = Col.TH)
+lines(c(1,2,3), c(4.9, 7.5, 0.91), type="h",lwd=55,lend="butt", col = Col.TH)
 
 arrows(c(1,2,3), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102),    
        c(1,2,3), c(0, 0, 0),
