@@ -222,3 +222,8 @@ abline(h=0)
 axis(1, c(0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5), c('0','10','20','30','40','50','60','70','80'), cex=2, pch=16, col = "black")
 axis(2)
 box()
+
+####Fig. 8 Bar of Proportion (Using Totals for Size Classes)#########
+
+
+
