@@ -32,17 +32,10 @@ summary(Density.Model)
 
 #Model for Association
 
-
+Col.MicroHab <- c('#FF0000','#FF8000', '#00CC00', '#66B2FF', '#B266FF')
 #####Graphs#####
 
-###Size Class Distribution in Microhabitat####
-data.muss$Log.Association <- log(x = (((data.muss$Association)^2)^0.5), base = 10)
-
-Hab.Mean.and.Deviation <- matrix(nrow = 50, ncol = 5)
-
-Hab.Mean.and.Deviation[,1] <- unique(data.muss$Microhabitat)
-
-
+###Fig. 2: Average Association of Micro per site####
 plot(0,type='n', #make empty plot 
      xlim=c(0.75,3.25) # x limits
      , ylim=c(0, 27) # y limits 
@@ -55,7 +48,7 @@ plot(0,type='n', #make empty plot
 arrows(c(1,2,3), c(4.9 + 10.78, 7.5 + 18.58, 0.9 + 2.102), 
        c(1,2,3), c(4.9 - 10.78, 7.5 - 18.58, 0.9 - 2.102),
        angle = 90, code = 3, length = 0, lty = 1, lwd = 5, # jelly bean width
-       col = c("blue", "darkviolet", "red"))
+       col = Col.MicroHab)
 
 points(x = c(1,2,3), y = c(4.9, 7.5, 0.91), cex = 1.5, pch = 16 )
 
