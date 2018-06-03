@@ -251,10 +251,7 @@ plot(0,type='n', #make empty plot
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.05) # make empty plot to fill in
 
-
-
-
-lines(c(1,2,3,4,5,6,7,8,9), c(1,2,3,4,5,6,7,8,9), type="h",lwd=55,lend="butt", col = Col.MicroHab)
+#Maybe use arrows for top and bottom portions of the bars?
 
 axis(1, c(0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5), c('0','10','20','30','40','50','60','70','80'), cex=2, pch=16, col = "black")
 axis(2)
