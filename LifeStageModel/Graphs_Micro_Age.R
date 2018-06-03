@@ -13,23 +13,6 @@ rm(list=ls())
 #Set DAta
 data.muss <- read.csv("Model_Format_Summary.csv")
 
-library(plyr)
-
-
-data.muss$TideH <- revalue(data.muss$TideH, c("L"= '1', "M"='2', "H"='3'))
-data.muss$Site <- revalue(data.muss$Site, c("CCSP" = '1', "LCDM" = '2'))
-data.muss$Microhabitat <- revalue(data.muss$Microhabitat, c("UnShelt_Solitary" = '1', "UnShelt_Aggregate" = '2', "Sheltered_Solitary" = '3', "Sheltered_Aggregate" = '4', "Tidepool" = '5'))
-data.muss$Season <- revalue(data.muss$Season, c("Spring" = '1', "Fall" = '3', "Summer" = '2'))
-
-
-#Model for Density
-Density.Model <- glm(data.muss$Density ~ data.muss$SizeClass, data = data.muss)
-
-summary(Density.Model)
-
-#Model for Filling
-
-
 #Model for Association
 
 #####Graphs#####
