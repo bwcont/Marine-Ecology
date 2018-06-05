@@ -31,3 +31,42 @@ summary(Density.Model)
 
 
 #Model for Association
+
+
+
+
+
+############From Sorte Computer######
+data1 <- read.csv("Model_Format_Summary.csv")
+
+#convert our site and TH into a numeric discrete
+data1$Site2 <- as.numeric(data$Site)
+
+#Making our TH into an ordered factor(s)
+data1$TideHeight2<-data$TideHeight
+
+
+library(plyr)
+data1$TideHeight2 <- revalue(data$TideHeight2,
+               c("L"="1", "M"="2", "H"="3"))
+
+data1$TideHeight2 <- as.numeric(TideHeight2)
+
+
+head(data1)
+View(data1)
+
+attach(data1)
+
+TotalMussModel <- glm(TotalMussels ~ Shelter + Microhabitat + TideHeight + Site +SizeClass, data = data1)
+summary(TotalMussModel)
+
+TotalMussModel2<-glm(TotalMussels ~ Microhabitat + TideHeight2 + Site +SizeClass, data = data1)
+summary(TotalMussModel2) 
+
+summary(TotalMussModel2)
+
+
+
+
+
