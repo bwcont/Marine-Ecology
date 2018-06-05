@@ -13,7 +13,18 @@ rm(list=ls())
 #Set DAta
 data.muss <- read.csv("Model_Format_Summary.csv")
 
-#Model for Association
+#Calculating averages using ddply from plyr package 
+library(plyr)
+
+Data.summary <- ddply(.data = data1, .variables = c("Site","TideH", "Microhabitat"), summarize,
+                      mean.Association = mean(data1$Association, na.rm=TRUE), # this is saying to take the mean range and ignore missing data if there is any
+                      N = sum(!is.na(data1$Association)), # how many samples do you have (code says what is not a missing value and sum the counts)
+                      Assoc.SE = (sd(data1$Association, na.rm = TRUE))/sqrt(N), # this is the standard error
+                      min.Assoc = min(data1$Association, na.rm=TRUE), # minimum tide height across all transects within a site
+                      max.Assoc = max(data1$Association, na.rm=TRUE), # max height across all transects
+)
+
+
 
 #####Graphs#####
 #Colors
