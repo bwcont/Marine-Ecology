@@ -13,16 +13,17 @@ rm(list=ls())
 #Set DAta
 data.muss <- read.csv("Model_Format_Summary.csv")
 
-#Calculating averages using ddply from plyr package 
+#####Calculating averages using ddply from plyr package ########
 library(plyr)
-
-Data.summary <- ddply(data1, c('Site', 'TideH','Microhabitat'), summarize,
-                      mean.Association = mean(data1$Association), # this is saying to take the mean range and ignore missing data if there is any
-                      N = length(data1$Association), # how many samples do you have (code says what is not a missing value and sum the counts)
-                      Assoc.SE = sd(data1$Association)/sqrt(N), # this is the standard error
-                      min.Assoc = min(data1$Association), # minimum tide height across all transects within a site
-                      max.Assoc = max(data1$Association) # max height across all transects
+data.muss <- as.data.frame(data.muss)
+Data.summary <- ddply(data.muss, c('Site', 'TideH','Microhabitat'), summarize,
+                      mean.Association = mean(Association, na.rm = TRUE), # this is saying to take the mean range and ignore missing data if there is any
+                      N = length(Association), # how many samples do you have (code says what is not a missing value and sum the counts)
+                      Assoc.SE = sd(Association, na.rm = TRUE)/sqrt(N), # this is the standard error
+                      min.Assoc = min(Association, na.rm = TRUE), # minimum tide height across all transects within a site
+                      max.Assoc = max(Association, na.rm = TRUE) # max height across all transects
 )
+#Note: you can't give it a data$column bc it will read the whole colum! trust it knows to just go after Association itself since you already told it where the the data is coming from
 
 Data.summary
 
