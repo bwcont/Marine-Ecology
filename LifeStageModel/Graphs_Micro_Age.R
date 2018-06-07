@@ -100,7 +100,7 @@ plot(0,type='n', #make empty plot
      , ylim=c(-1,1) # y limits 
      , xlab= ' ', # name x azis
      ylab = 'Association', # name y axis
-     main = ' ', # main title (on middle of plot)
+     main = 'Mid', # main title (on middle of plot)
      pch=19, yaxt='n', axes=F, # removed axes
      cex.lab=1.05) # make empty plot to fill in
 
@@ -117,6 +117,34 @@ abline(h=0)
 box()
 
 ##May need to remove this legend, keep for now
+legend("topright", legend=c('UnShelt_Solitary',
+                            'UnShelt_Aggregate',
+                            'Sheltered_Solitary',
+                            'Sheltered_Aggregate',
+                            'Tidepool'), fill = Col.MicroHab, cex=0.9)
+
+###Fig. 2.3: Average Association at high TH of Micro per site#####
+plot(0,type='n', #make empty plot 
+     xlim=c(0.75,11.25) # x limits
+     , ylim=c(-1,1) # y limits 
+     , xlab= ' ', # name x azis
+     ylab = 'Association', # name y axis
+     main = 'High', # main title (on middle of plot)
+     pch=19, yaxt='n', axes=F, # removed axes
+     cex.lab=1.05) # make empty plot to fill in
+
+arrows(c(1,2,3,4,5,7,8,9,10,11), c(-0.984-0.015, -1, -0.9777-0.022, -0.5744-0.183, -0.882-0.049, -0.987-0.012, -0.835-0.109, -0.916-0.046, -0.843-0.083, -0.768-0.120), 
+       c(1,2,3,4,5,7,8,9,10,11), c(-0.984+0.015, -1, -0.9777+0.022, -0.5744+0.183, -0.882+0.049, -0.987+0.012, -0.835+0.109, -0.916+0.046, -0.843+0.083, -0.768+0.120),
+       angle = 90, code = 3, length = 0, lty = 1, lwd = 12, # jelly bean width
+       col = Col.MicroHab)
+
+points(x = c(1,2,3,4,5,7,8,9,10,11), y = c(-0.984, -1, -0.9777, -0.5744, -0.882, -0.987, -0.835, -0.916, -0.843, -0.768), cex = 1.4, pch = 16, col = "black" )
+
+axis(1, c(3, 9), c("LCDM", 'CCSP'), cex=2, pch=16, col = "black")
+axis(2)
+abline(h=0)
+box()
+
 legend("topright", legend=c('UnShelt_Solitary',
                             'UnShelt_Aggregate',
                             'Sheltered_Solitary',
